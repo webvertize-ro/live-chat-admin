@@ -24,20 +24,9 @@ function ConversationsList() {
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  const [visitors, setVisitors] = useState(null);
-
-  useEffect(() => {
-    async function getConversations() {
-      const res = await fetch('/api/getVisitors');
-      const data = await res.json();
-      setVisitors(data.visitors || []);
-    }
-    getConversations();
-  }, []);
-
   return (
     <StyledConversationsList>
-      {visitors?.map((visitor) => (
+      {conversations.map((visitor) => (
         <Visitor key={visitor.id}>
           <div>
             <strong>Name</strong>
