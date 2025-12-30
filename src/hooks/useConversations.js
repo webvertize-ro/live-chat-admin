@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 
-export function useConversations() {
-  const [conversations, setConversations] = useState([]);
+export default function useConversations() {
   const [loading, setLoading] = useState(true);
+  const [conversations, setConversations] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchConversations() {
       try {
         setLoading(true);
-        const res = await fetch('/api/getVisitors');
-        const data = await res.json();
+        const response = await fetch('/api/visitors');
+        const data = await response.json();
 
-        if (!res.ok) {
+        if (!response.ok) {
           throw new Error(data.error || 'Failed to fetch conversations');
         }
 
         setConversations(data.visitors || []);
-      } catch (err) {
-        setError(err.message);
+      } catch (error) {
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -28,8 +28,8 @@ export function useConversations() {
   }, []);
 
   return {
-    conversations,
     loading,
+    conversations,
     error,
     setConversations,
   };
