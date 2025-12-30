@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledChatInterface = styled.div`
   height: 400px;
   width: 500px;
+  flex: 1;
 `;
 
 function ChatInterface() {

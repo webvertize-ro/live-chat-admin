@@ -5,6 +5,9 @@ const StyledConversationsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: 650px;
+  overflow-y: scroll;
+  flex: 1;
 `;
 
 const Visitor = styled.div`
