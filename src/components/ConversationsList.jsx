@@ -23,6 +23,18 @@ function ConversationsList() {
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  async function fetchMessages() {
+    try {
+      const res = await fetch('api/getMessages');
+      const data = res.json();
+      console.log('retrieved data is: ', data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  fetchMessages();
+
   return (
     <StyledConversationsList>
       {conversations.map((visitor) => (
