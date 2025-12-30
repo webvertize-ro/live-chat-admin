@@ -14,7 +14,7 @@ function ConversationsList() {
 
   return (
     <div>
-      {visitors.map((visitor) => (
+      {visitors?.map((visitor) => (
         <div>
           <div>{visitor.name}</div>
           <div>{visitor.phone_number}</div>
