@@ -5,7 +5,6 @@ function App() {
   return (
     <div>
       <ChatLayout />
-      This will be the admin dashboard!
     </div>
   );
 }
