@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useConversations } from '../hooks/useConversations';
 
 const StyledConversationsList = styled.div`
   display: flex;
@@ -18,6 +19,11 @@ const Visitor = styled.div`
 `;
 
 function ConversationsList() {
+  const { conversations, loading, error } = useConversations();
+
+  if (loading) return <p>Loading conversations...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   const [visitors, setVisitors] = useState(null);
 
   useEffect(() => {
@@ -32,7 +38,7 @@ function ConversationsList() {
   return (
     <StyledConversationsList>
       {visitors?.map((visitor) => (
-        <Visitor>
+        <Visitor key={visitor.id}>
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>
