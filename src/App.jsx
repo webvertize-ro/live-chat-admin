@@ -1,5 +1,12 @@
+import ConversationsList from './components/ConversationsList';
+
 function App() {
-  return <div>This will be the admin dashboard!</div>;
+  return (
+    <div>
+      <ConversationsList />
+      This will be the admin dashboard!
+    </div>
+  );
 }
 
 export default App;
