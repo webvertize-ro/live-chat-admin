@@ -8,7 +8,7 @@ const StyledChatLayout = styled.div`
 
 function ChatLayout() {
   return (
-    <StyledChatLayout>
+    <StyledChatLayout className="container">
       <ConversationsList />
       <ChatInterface />
     </StyledChatLayout>
