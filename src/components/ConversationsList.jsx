@@ -26,7 +26,7 @@ function ConversationsList() {
   async function fetchMessages() {
     try {
       const res = await fetch('api/getMessages');
-      const data = res.json();
+      const data = await res.json();
       console.log('retrieved data is: ', data);
     } catch (error) {
       console.error(error);
