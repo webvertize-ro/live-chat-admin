@@ -9,7 +9,7 @@ export default function useConversations() {
     async function fetchConversations() {
       try {
         setLoading(true);
-        const response = await fetch('/api/visitors');
+        const response = await fetch('/api/getVisitors');
         const data = await response.json();
 
         if (!response.ok) {
