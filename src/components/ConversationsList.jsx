@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+const StyledConversationsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
 const Visitor = styled.div`
   border: 1px solid black;
   padding: 1rem;
@@ -21,7 +27,7 @@ function ConversationsList() {
   }, []);
 
   return (
-    <div>
+    <StyledConversationsList>
       {visitors?.map((visitor) => (
         <Visitor>
           <div>
@@ -34,7 +40,7 @@ function ConversationsList() {
           </div>
         </Visitor>
       ))}
-    </div>
+    </StyledConversationsList>
   );
 }
 

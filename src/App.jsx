@@ -1,9 +1,10 @@
+import ChatLayout from './components/ChatLayout';
 import ConversationsList from './components/ConversationsList';
 
 function App() {
   return (
     <div>
-      <ConversationsList />
+      <ChatLayout />
       This will be the admin dashboard!
     </div>
   );
