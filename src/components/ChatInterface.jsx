@@ -76,7 +76,6 @@ function ChatInterface({ selectedConvo }) {
         console.error(error);
       }
     }
-
     fetchVisitor();
   }, [selectedConvo]);
 
