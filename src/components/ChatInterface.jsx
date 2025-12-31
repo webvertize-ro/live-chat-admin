@@ -54,6 +54,11 @@ const MessageDate = styled.div`
 
 const Bottom = styled.div``;
 
+const StyledForm = styled.form`
+  display: flex;
+  gap: 0.5rem;
+`;
+
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
 
@@ -96,7 +101,7 @@ function ChatInterface({ selectedConvo }) {
       </Messages>
 
       <Bottom>
-        <form>
+        <StyledForm>
           <input
             type="text"
             name="message"
@@ -106,7 +111,7 @@ function ChatInterface({ selectedConvo }) {
           <button className="btn btn-primary" type="submit">
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>
-        </form>
+        </StyledForm>
       </Bottom>
     </StyledChatInterface>
   );
