@@ -73,7 +73,7 @@ function ChatInterface({ selectedConvo }) {
       try {
         const res = await fetch(`/api/getVisitors?visitorId=${selectedConvo}`);
         const data = await res.json();
-        setVisitor(data.visitors[0] ? data.visitors[0] : null);
+        setVisitor('data.visitors is: ', data.visitors);
       } catch (error) {
         console.error(error);
       }
