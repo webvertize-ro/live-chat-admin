@@ -10,6 +10,7 @@ const StyledChatInterface = styled.div`
   border: 1px solid green;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 `;
 
 const Header = styled.div`
@@ -82,15 +83,18 @@ function ChatInterface({ selectedConvo }) {
         <div>Name: {selectedConvo.name}</div>
         <div>Phone Number: {selectedConvo.phone_number}</div>
       </Header>
-      {messages?.map((msg, i) => (
-        <MessageBubble key={i} senderType={msg.sender_type}>
-          <strong>{msg.user_name}:</strong>
-          <MessageContent>
-            <Message>{msg.message}</Message>
-            <MessageDate>{msg.created_at}</MessageDate>
-          </MessageContent>
-        </MessageBubble>
-      ))}
+      <Messages>
+        {messages?.map((msg, i) => (
+          <MessageBubble key={i} senderType={msg.sender_type}>
+            <strong>{msg.user_name}:</strong>
+            <MessageContent>
+              <Message>{msg.message}</Message>
+              <MessageDate>{msg.created_at}</MessageDate>
+            </MessageContent>
+          </MessageBubble>
+        ))}
+      </Messages>
+
       <Bottom>
         <form>
           <input
