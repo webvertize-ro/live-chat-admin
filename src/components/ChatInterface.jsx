@@ -7,6 +7,7 @@ const StyledChatInterface = styled.div`
   flex: 4;
   border: 1px solid green;
   display: flex;
+  flex-direction: column;
 `;
 
 const Header = styled.div``;
