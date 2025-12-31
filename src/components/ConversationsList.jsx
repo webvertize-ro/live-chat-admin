@@ -26,7 +26,7 @@ function ConversationsList() {
   if (error) return <p>Error: {error}</p>;
 
   function handleSelectedConvo(e) {
-    console.log(e.target);
+    console.log(e.target.key);
   }
 
   return (
