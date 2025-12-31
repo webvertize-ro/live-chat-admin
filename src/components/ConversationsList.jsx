@@ -18,22 +18,16 @@ const Visitor = styled.div`
   flex-direction: column;
 `;
 
-function ConversationsList() {
+function ConversationsList({ onSelectedConvo }) {
   const { loading, conversations, error } = useConversations();
-  const [selectedConvo, setSelectedConvo] = useState(null);
 
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  function handleSelectedConvo(visitorId) {
-    console.log(selectedConvo);
-    setSelectedConvo(visitorId);
-  }
-
   return (
     <StyledConversationsList>
       {conversations.map((visitor, i) => (
-        <Visitor key={i} onClick={() => handleSelectedConvo(visitor.id)}>
+        <Visitor key={i} onClick={() => onSelectedConvo(visitor.id)}>
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>

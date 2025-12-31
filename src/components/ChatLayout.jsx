@@ -8,10 +8,16 @@ const StyledChatLayout = styled.div`
 `;
 
 function ChatLayout() {
-  const [selectedVisitorId, setSelectedVisitorId] = useState(null);
+  const [selectedConvo, setSelectedConvo] = useState(null);
+
+  function handleSelectedConvo(visitorId) {
+    console.log(selectedConvo);
+    setSelectedConvo(visitorId);
+  }
+
   return (
     <StyledChatLayout className="container">
-      <ConversationsList />
+      <ConversationsList onSelectedConvo={handleSelectedConvo} />
       <ChatInterface />
     </StyledChatLayout>
   );
