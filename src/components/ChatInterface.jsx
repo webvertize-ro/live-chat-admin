@@ -22,11 +22,11 @@ const MessageBubble = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: lightgreen; */
+  background-color: lightgreen;
   border-radius: 1rem;
   padding: 0.5rem;
-  background-color: ${(props) =>
-    props.senderType === 'user' ? 'green' : 'red'};
+  align-self: ${(props) =>
+    props.senderType === 'user' ? 'flex-start' : 'flex-end'};
 `;
 
 const MessageContent = styled.div`
