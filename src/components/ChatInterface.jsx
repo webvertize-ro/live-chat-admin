@@ -52,6 +52,7 @@ function ChatInterface() {
       const res = await fetch(`api/getMessages?visitorId=${37}`);
       const data = await res.json();
       setMessages(data.messages);
+      console.log('retrieved messages: ', data.messages);
     } catch (error) {
       console.error(error);
     }
