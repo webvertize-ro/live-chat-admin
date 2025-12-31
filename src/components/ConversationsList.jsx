@@ -22,7 +22,7 @@ function ConversationsList() {
   const { loading, conversations, error } = useConversations();
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
-
+  console.log('retrieved conversations: ', conversations);
   return (
     <StyledConversationsList>
       {conversations.map((visitor) => (
