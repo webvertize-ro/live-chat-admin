@@ -54,13 +54,11 @@ const MessageDate = styled.div`
 
 const Bottom = styled.div``;
 
-const StyledForm = styled.form`
-  display: flex;
-  gap: 0.5rem;
-`;
+const StyledForm = styled.form``;
 
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
+  const [input, setInput] = useState();
 
   useEffect(() => {
     if (!selectedConvo) return;
@@ -79,6 +77,35 @@ function ChatInterface({ selectedConvo }) {
 
     fetchMessages();
   }, [selectedConvo]);
+
+  async function sendMessage(e) {
+    e.preventDefault();
+    if (!input) return;
+
+    try {
+      const res = await fetch('/api/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_name: selectedConvo.name,
+          messages: input,
+          sender_type: 'admin',
+          visitor_id: 1000,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setInput('');
+
+        // append new message
+        // setMessages()
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   if (!selectedConvo) return <p>Select a conversation from the left</p>;
 
@@ -101,7 +128,7 @@ function ChatInterface({ selectedConvo }) {
       </Messages>
 
       <Bottom>
-        <StyledForm>
+        <StyledForm onSubmit={sendMessage}>
           <input
             type="text"
             name="message"
