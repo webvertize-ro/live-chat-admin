@@ -69,7 +69,7 @@ function ChatInterface({ selectedConvo }) {
   useEffect(() => {
     async function fetchVisitor() {
       try {
-        const res = await fetch(`/api/getVisitors?visitorId${selectedConvo}`);
+        const res = await fetch(`/api/getVisitors?visitorId=${selectedConvo}`);
         const data = await res.json();
         console.log(data);
       } catch (error) {
