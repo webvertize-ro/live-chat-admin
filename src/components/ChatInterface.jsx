@@ -14,6 +14,7 @@ const Header = styled.div`
   background-color: blue;
   color: white;
   display: flex;
+  height: 50px;
 `;
 
 const Messages = styled.div`
