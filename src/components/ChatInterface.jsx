@@ -62,7 +62,7 @@ function ChatInterface() {
   return (
     <StyledChatInterface>
       <Header></Header>
-      {messages.map((msg, i) => (
+      {messages?.map((msg, i) => (
         <MessageBubble key={i} senderType={msg.sender_type}>
           <strong>{msg.user_name}:</strong>
           <MessageContent>
