@@ -50,7 +50,9 @@ function ChatInterface({ selectedConvo }) {
 
   async function fetchMessages() {
     try {
-      const res = await fetch(`api/getMessages?visitorId=${selectedConvo}`);
+      const res = await fetch(
+        `api/getMessages?visitorId=${selectedConvo ? selectedConvo : null}`
+      );
       const data = await res.json();
       setMessages(data.messages);
     } catch (error) {
