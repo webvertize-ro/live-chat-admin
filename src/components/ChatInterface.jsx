@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledChatInterface = styled.div`
   height: 400px;
@@ -89,7 +91,18 @@ function ChatInterface({ selectedConvo }) {
           </MessageContent>
         </MessageBubble>
       ))}
-      <Bottom></Bottom>
+      <Bottom>
+        <form>
+          <input
+            type="text"
+            name="message"
+            placeholder="Type your message here..."
+          />
+          <button type="submit">
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </button>
+        </form>
+      </Bottom>
     </StyledChatInterface>
   );
 }
