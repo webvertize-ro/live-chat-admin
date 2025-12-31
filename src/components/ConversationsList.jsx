@@ -26,7 +26,8 @@ function ConversationsList() {
   if (error) return <p>Error: {error}</p>;
 
   function handleSelectedConvo(e) {
-    console.log(e.target.key);
+    const clickedConversation = e.target.closest('.conversation').className;
+    console.log(clickedConversation);
   }
 
   return (
@@ -34,7 +35,7 @@ function ConversationsList() {
       {conversations.map((visitor, i) => (
         <Visitor
           key={i}
-          className={`${visitor.id}`}
+          className={`conversation ${visitor.id}`}
           onClick={(e) => handleSelectedConvo(e)}
         >
           <div>
