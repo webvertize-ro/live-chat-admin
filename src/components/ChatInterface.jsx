@@ -22,11 +22,11 @@ const MessageBubble = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   border-radius: 1rem;
   padding: 0.5rem;
-  align-self: ${(props) =>
-    props.senderType === 'user' ? 'flex-end' : 'flex-start'};
+  background-color: ${(props) =>
+    props.senderType === 'user' ? 'green' : 'red'};
 `;
 
 const MessageContent = styled.div`
@@ -52,7 +52,6 @@ function ChatInterface() {
       const res = await fetch(`api/getMessages?visitorId=${37}`);
       const data = await res.json();
       setMessages(data.messages);
-      console.log('retrieved messages: ', data.messages);
     } catch (error) {
       console.error(error);
     }
