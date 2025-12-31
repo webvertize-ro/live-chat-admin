@@ -90,7 +90,7 @@ function ChatInterface({ selectedConvo }) {
           user_name: selectedConvo.name,
           message: input,
           sender_type: 'admin',
-          visitor_id: 1000,
+          visitor_id: selectedConvo.id,
         }),
       });
 
