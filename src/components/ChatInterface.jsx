@@ -10,7 +10,11 @@ const StyledChatInterface = styled.div`
   flex-direction: column;
 `;
 
-const Header = styled.div``;
+const Header = styled.div`
+  background-color: blue;
+  color: white;
+  display: flex;
+`;
 
 const Messages = styled.div`
   display: flex;
@@ -66,15 +70,17 @@ function ChatInterface({ selectedConvo }) {
 
   return (
     <StyledChatInterface>
-      <Header></Header>
       {messages?.map((msg, i) => (
-        <MessageBubble key={i} senderType={msg.sender_type}>
-          <strong>{msg.user_name}:</strong>
-          <MessageContent>
-            <Message>{msg.message}</Message>
-            <MessageDate>{msg.created_at}</MessageDate>
-          </MessageContent>
-        </MessageBubble>
+        <>
+          <Header>{msg.user_name}</Header>
+          <MessageBubble key={i} senderType={msg.sender_type}>
+            <strong>{msg.user_name}:</strong>
+            <MessageContent>
+              <Message>{msg.message}</Message>
+              <MessageDate>{msg.created_at}</MessageDate>
+            </MessageContent>
+          </MessageBubble>
+        </>
       ))}
       <Bottom></Bottom>
     </StyledChatInterface>
