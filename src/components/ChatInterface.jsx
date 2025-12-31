@@ -66,21 +66,33 @@ function ChatInterface({ selectedConvo }) {
     fetchMessages();
   }, [selectedConvo]);
 
+  useEffect(() => {
+    async function fetchVisitor() {
+      try {
+        const res = await fetch(`/api/getVisitors?visitorId${selectedConvo}`);
+        const data = await res.json();
+        console.log(data.visitors);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchVisitor();
+  }, [selectedConvo]);
+
   if (!selectedConvo) return <p>Select a conversation from the left</p>;
 
   return (
     <StyledChatInterface>
+      <Header></Header>
       {messages?.map((msg, i) => (
-        <>
-          <Header>{msg.user_name}</Header>
-          <MessageBubble key={i} senderType={msg.sender_type}>
-            <strong>{msg.user_name}:</strong>
-            <MessageContent>
-              <Message>{msg.message}</Message>
-              <MessageDate>{msg.created_at}</MessageDate>
-            </MessageContent>
-          </MessageBubble>
-        </>
+        <MessageBubble key={i} senderType={msg.sender_type}>
+          <strong>{msg.user_name}:</strong>
+          <MessageContent>
+            <Message>{msg.message}</Message>
+            <MessageDate>{msg.created_at}</MessageDate>
+          </MessageContent>
+        </MessageBubble>
       ))}
       <Bottom></Bottom>
     </StyledChatInterface>

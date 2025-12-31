@@ -10,10 +10,21 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  let query = supabase
-    .from('visitors')
-    .select('*')
-    .order('created_at', { ascending: true });
+  const visitorId = req.query;
+  let query;
+
+  if (visitorId) {
+    query = supabase
+      .from('visitors')
+      .select('*')
+      .eq('id', visitorId)
+      .order('created_at', { ascending: true });
+  } else {
+    query = supabase
+      .from('visitors')
+      .select('*')
+      .order('created_at', { ascending: true });
+  }
 
   const { data, error } = await query;
 
