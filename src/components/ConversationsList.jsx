@@ -26,8 +26,8 @@ function ConversationsList() {
   if (error) return <p>Error: {error}</p>;
 
   function handleSelectedConvo(visitorId) {
-    setSelectedConvo(visitorId);
     console.log(selectedConvo);
+    setSelectedConvo(visitorId);
   }
 
   return (
