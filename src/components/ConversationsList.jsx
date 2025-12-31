@@ -20,13 +20,19 @@ const Visitor = styled.div`
 
 function ConversationsList() {
   const { loading, conversations, error } = useConversations();
+  const [selectedConvo, setSelectedConvo] = useState(null);
+
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
-  console.log('retrieved conversations: ', conversations);
+
+  function handleSelectedConvo(e) {
+    console.log(e.target);
+  }
+
   return (
     <StyledConversationsList>
-      {conversations.map((visitor) => (
-        <Visitor>
+      {conversations.map((visitor, i) => (
+        <Visitor key={i} onClick={() => handleSelectedConvo()}>
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>
