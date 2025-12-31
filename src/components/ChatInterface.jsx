@@ -45,12 +45,12 @@ const MessageDate = styled.div`
 
 const Bottom = styled.div``;
 
-function ChatInterface() {
+function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
 
   async function fetchMessages() {
     try {
-      const res = await fetch(`api/getMessages?visitorId=${37}`);
+      const res = await fetch(`api/getMessages?visitorId=${selectedConvo}`);
       const data = await res.json();
       setMessages(data.messages);
     } catch (error) {
