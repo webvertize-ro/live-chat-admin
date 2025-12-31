@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledChatInterface = styled.div`
@@ -48,19 +48,21 @@ const Bottom = styled.div``;
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
 
-  async function fetchMessages() {
-    try {
-      const res = await fetch(
-        `api/getMessages?visitorId=${selectedConvo ? selectedConvo : null}`
-      );
-      const data = await res.json();
-      setMessages(data.messages);
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    async function fetchMessages() {
+      try {
+        const res = await fetch(
+          `api/getMessages?visitorId=${selectedConvo ? selectedConvo : null}`
+        );
+        const data = await res.json();
+        setMessages(data.messages);
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
 
-  fetchMessages();
+    fetchMessages();
+  }, [selectedConvo]);
 
   return (
     <StyledChatInterface>
