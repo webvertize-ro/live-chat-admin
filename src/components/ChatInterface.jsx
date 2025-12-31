@@ -133,6 +133,8 @@ function ChatInterface({ selectedConvo }) {
             type="text"
             name="message"
             placeholder="Type your message here..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             className="form-control"
           />
           <button className="btn btn-primary" type="submit">
