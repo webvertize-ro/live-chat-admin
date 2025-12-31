@@ -27,7 +27,7 @@ function ConversationsList() {
     try {
       const res = await fetch(`api/getMessages?visitorId=${37}`);
       const data = await res.json();
-      console.log('retrieved data is: ', data);
+      console.log('retrieved data is: ', data.messages);
     } catch (error) {
       console.error(error);
     }
