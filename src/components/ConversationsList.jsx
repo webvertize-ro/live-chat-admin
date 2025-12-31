@@ -23,18 +23,6 @@ function ConversationsList() {
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  async function fetchMessages() {
-    try {
-      const res = await fetch(`api/getMessages?visitorId=${37}`);
-      const data = await res.json();
-      console.log('retrieved data is: ', data.messages);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  fetchMessages();
-
   return (
     <StyledConversationsList>
       {conversations.map((visitor) => (
