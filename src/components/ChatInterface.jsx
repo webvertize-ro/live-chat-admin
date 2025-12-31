@@ -89,7 +89,7 @@ function ChatInterface({ selectedConvo }) {
 
   return (
     <StyledChatInterface>
-      <Header>{visitor}</Header>
+      <Header>{visitor.name}</Header>
       {messages?.map((msg, i) => (
         <MessageBubble key={i} senderType={msg.sender_type}>
           <strong>{msg.user_name}:</strong>
