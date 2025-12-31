@@ -51,9 +51,7 @@ function ChatInterface({ selectedConvo }) {
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const res = await fetch(
-          `api/getMessages?visitorId=${selectedConvo ? selectedConvo : null}`
-        );
+        const res = await fetch(`api/getMessages?visitorId=${selectedConvo}`);
         const data = await res.json();
         setMessages(data.messages);
       } catch (error) {
