@@ -25,19 +25,15 @@ function ConversationsList() {
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  function handleSelectedConvo(e) {
-    const clickedConversation = e.target.closest('.conversation').className;
-    console.log(clickedConversation);
+  function handleSelectedConvo(visitorId) {
+    setSelectedConvo(visitorId);
+    console.log(selectedConvo);
   }
 
   return (
     <StyledConversationsList>
       {conversations.map((visitor, i) => (
-        <Visitor
-          key={i}
-          className={`conversation ${visitor.id}`}
-          onClick={(e) => handleSelectedConvo(e)}
-        >
+        <Visitor key={i} onClick={() => handleSelectedConvo(visitor.id)}>
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>
