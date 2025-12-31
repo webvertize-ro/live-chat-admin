@@ -32,7 +32,11 @@ function ConversationsList() {
   return (
     <StyledConversationsList>
       {conversations.map((visitor, i) => (
-        <Visitor key={i} onClick={(e) => handleSelectedConvo(e)}>
+        <Visitor
+          key={i}
+          className={`${visitor.id}`}
+          onClick={(e) => handleSelectedConvo(e)}
+        >
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>
