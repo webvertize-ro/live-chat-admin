@@ -27,7 +27,7 @@ function ConversationsList({ onSelectedConvo }) {
   return (
     <StyledConversationsList>
       {conversations.map((visitor, i) => (
-        <Visitor key={i} onClick={() => onSelectedConvo(visitor.id)}>
+        <Visitor key={i} onClick={() => onSelectedConvo(visitor)}>
           <div>
             <strong>Name</strong>
             <div>{visitor.name}</div>
