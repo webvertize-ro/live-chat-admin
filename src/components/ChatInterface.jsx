@@ -53,13 +53,14 @@ const Bottom = styled.div``;
 
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
-  const [visitor, setVisitor] = useState();
 
   useEffect(() => {
+    if (!selectedConvo) return;
+
     async function fetchMessages() {
       try {
         const res = await fetch(
-          `api/getMessages?visitorId=${selectedConvo ? selectedConvo : 1}`
+          `api/getMessages?visitorId=${selectedConvo.id}`
         );
         const data = await res.json();
         setMessages(data.messages);
@@ -69,21 +70,6 @@ function ChatInterface({ selectedConvo }) {
     }
 
     fetchMessages();
-  }, [selectedConvo]);
-
-  useEffect(() => {
-    async function fetchVisitor() {
-      try {
-        const res = await fetch(
-          `/api/getVisitors?visitorId=${selectedConvo ? selectedConvo : 1}`
-        );
-        const data = await res.json();
-        setVisitor(data.visitors);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchVisitor();
   }, [selectedConvo]);
 
   if (!selectedConvo) return <p>Select a conversation from the left</p>;
