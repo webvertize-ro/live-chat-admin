@@ -101,8 +101,9 @@ function ChatInterface({ selectedConvo }) {
             type="text"
             name="message"
             placeholder="Type your message here..."
+            className="form-control"
           />
-          <button type="submit">
+          <button className="btn btn-primary" type="submit">
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>
         </form>
