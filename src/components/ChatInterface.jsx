@@ -47,7 +47,6 @@ const Bottom = styled.div``;
 
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
-
   useEffect(() => {
     async function fetchMessages() {
       try {
@@ -61,6 +60,8 @@ function ChatInterface({ selectedConvo }) {
 
     fetchMessages();
   }, [selectedConvo]);
+
+  if (!selectedConvo) return <p>Select a conversation from the left</p>;
 
   return (
     <StyledChatInterface>
