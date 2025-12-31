@@ -52,6 +52,8 @@ const Bottom = styled.div``;
 
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
+  const [visitor, setVisitor] = useState();
+
   useEffect(() => {
     async function fetchMessages() {
       try {
@@ -71,7 +73,7 @@ function ChatInterface({ selectedConvo }) {
       try {
         const res = await fetch(`/api/getVisitors?visitorId=${selectedConvo}`);
         const data = await res.json();
-        console.log(data.visitors);
+        setVisitor(data.visitors[0]);
       } catch (error) {
         console.error(error);
       }
@@ -83,7 +85,7 @@ function ChatInterface({ selectedConvo }) {
 
   return (
     <StyledChatInterface>
-      <Header></Header>
+      <Header>{visitor}</Header>
       {messages?.map((msg, i) => (
         <MessageBubble key={i} senderType={msg.sender_type}>
           <strong>{msg.user_name}:</strong>
