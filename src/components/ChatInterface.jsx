@@ -88,7 +88,7 @@ function ChatInterface({ selectedConvo }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           user_name: selectedConvo.name,
-          messages: input,
+          message: input,
           sender_type: 'admin',
           visitor_id: 1000,
         }),
