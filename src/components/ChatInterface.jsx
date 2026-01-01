@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { supabase } from '../db/db';
 
 const StyledChatInterface = styled.div`
   height: 400px;
@@ -76,6 +77,31 @@ function ChatInterface({ selectedConvo }) {
     }
 
     fetchMessages();
+  }, [selectedConvo]);
+
+  // subscribing to real-time changes
+  useEffect(() => {
+    if (!selectedConvo) return;
+
+    const channel = supabase
+      .channel(`messages-${selectedConvo.id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'messages',
+          filter: `visitor_id=eq.${selectedConvo.id}`,
+        },
+        (payload) => {
+          setMessages((prev) => [...prev, payload.new]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [selectedConvo]);
 
   async function sendMessage(e) {
