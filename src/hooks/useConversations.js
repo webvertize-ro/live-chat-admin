@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { supabase } from '../db/db';
 
 export default function useConversations() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,28 @@ export default function useConversations() {
 
     fetchConversations();
   }, []);
+
+  // implementing real-time
+  useEffect(() => {
+    const channel = supabase
+      .channel('get-visitors')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          table: 'visitors',
+          schema: 'public',
+        },
+        (payload) => {
+          setConversations((prev) => [...prev, payload.new]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  });
 
   return {
     loading,

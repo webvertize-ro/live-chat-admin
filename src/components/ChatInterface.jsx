@@ -84,7 +84,7 @@ function ChatInterface({ selectedConvo }) {
     if (!selectedConvo) return;
 
     const channel = supabase
-      .channel(`messages-${selectedConvo.id}`)
+      .channel(`messages-${selectedConvo}`)
       .on(
         'postgres_changes',
         {
