@@ -180,6 +180,7 @@ function ChatInterface({ selectedConvo }) {
       <Messages>
         {messages?.map((msg, i) => (
           <MessageBubble key={i} senderType={msg.sender_type}>
+            {console.log('message is: ', msg)}
             <strong>{msg.user_name}:</strong>
             <MessageContent>
               {msg.type === 'text' && <Message>{msg.message}</Message>}
