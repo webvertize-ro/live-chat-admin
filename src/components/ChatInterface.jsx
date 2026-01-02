@@ -57,6 +57,17 @@ const Bottom = styled.div``;
 
 const StyledForm = styled.form``;
 
+const CustomLabel = styled.label`
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+`;
+
+const FileUploadInput = styled.input`
+  display: none;
+`;
+
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
@@ -208,7 +219,9 @@ function ChatInterface({ selectedConvo }) {
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
           />
-          <input
+          <CustomLabel />
+          <FileUploadInput
+            id="file-upload"
             type="file"
             onChange={(e) => handleSelectFile(e.target.files[0])}
           />
