@@ -69,6 +69,17 @@ const FileUploadInput = styled.input`
   display: none;
 `;
 
+const PreviewContainer = styled.div`
+  margin-bottom: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+`;
+
+const StyledButton = styled.button`
+  margin-left: 0.5rem;
+`;
+
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
