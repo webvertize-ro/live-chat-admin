@@ -178,7 +178,7 @@ function ChatInterface({ selectedConvo }) {
         <div>Phone Number: {selectedConvo.phone_number}</div>
       </Header>
       <Messages>
-        {messages.map((msg, i) => (
+        {messages?.map((msg, i) => (
           <MessageBubble key={i} senderType={msg.sender_type}>
             <strong>{msg.user_name}:</strong>
             <MessageContent>
