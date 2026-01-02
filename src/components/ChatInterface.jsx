@@ -106,24 +106,6 @@ function ChatInterface({ selectedConvo }) {
     };
   }, [selectedConvo]);
 
-  const handleSelectFile = (file) => {
-    if (!file) return;
-
-    setAttachment(file);
-
-    if (file.type.startsWith('image/')) {
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
-    } else {
-      setPreviewUrl(null);
-    }
-  };
-
-  const clearAttachment = () => {
-    setAttachment(null);
-    setPreviewUrl(null);
-  };
-
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -167,6 +149,24 @@ function ChatInterface({ selectedConvo }) {
     // Reset UI
     setInput('');
     clearAttachment();
+  };
+
+  const handleSelectFile = (file) => {
+    if (!file) return;
+
+    setAttachment(file);
+
+    if (file.type.startsWith('image/')) {
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    } else {
+      setPreviewUrl(null);
+    }
+  };
+
+  const clearAttachment = () => {
+    setAttachment(null);
+    setPreviewUrl(null);
   };
 
   if (!selectedConvo) return <p>Select a conversation from the left</p>;
