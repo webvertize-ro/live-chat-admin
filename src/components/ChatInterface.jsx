@@ -134,7 +134,7 @@ function ChatInterface({ selectedConvo }) {
         user_name: selectedConvo.user_name,
         message: input || null,
         sender_type: 'admin',
-        visitorId: selectedConvo.id,
+        visitor_id: selectedConvo.id,
         type: attachment
           ? attachment.type.startsWith('image')
             ? 'image'
