@@ -178,11 +178,19 @@ function ChatInterface({ selectedConvo }) {
         <div>Phone Number: {selectedConvo.phone_number}</div>
       </Header>
       <Messages>
-        {messages?.map((msg, i) => (
+        {messages.map((msg, i) => (
           <MessageBubble key={i} senderType={msg.sender_type}>
             <strong>{msg.user_name}:</strong>
             <MessageContent>
-              <Message>{msg.message}</Message>
+              {msg.type === 'text' && <Message>{msg.message}</Message>}
+              {msg.type === 'image' && (
+                <img src={msg.file_url} alt={msg.file_name} width="100" />
+              )}
+              {msg.type === 'file' && (
+                <a href={msg.file_url} target="_blank">
+                  {msg.file_name}
+                </a>
+              )}
               <MessageDate>{msg.created_at}</MessageDate>
             </MessageContent>
           </MessageBubble>
