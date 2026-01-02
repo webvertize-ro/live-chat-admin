@@ -219,7 +219,7 @@ function ChatInterface({ selectedConvo }) {
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
           />
-          <CustomLabel />
+          <CustomLabel for="file-upload">custom upload</CustomLabel>
           <FileUploadInput
             id="file-upload"
             type="file"
