@@ -131,7 +131,7 @@ function ChatInterface({ selectedConvo }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        user_name: selectedConvo.name,
+        user_name: selectedConvo.user_name,
         message: input || null,
         sender_type: 'admin',
         visitorId: selectedConvo.id,
