@@ -210,6 +210,7 @@ function ChatInterface({ selectedConvo }) {
           />
           <input
             type="file"
+            value={'test'}
             onChange={(e) => handleSelectFile(e.target.files[0])}
           />
           <button className="btn btn-primary" type="submit">
