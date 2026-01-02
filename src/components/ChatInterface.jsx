@@ -134,7 +134,7 @@ function ChatInterface({ selectedConvo }) {
     if (attachment) {
       const formData = new FormData();
       formData.append('file', attachment);
-      formData.append('visitor_id', visitorId);
+      formData.append('visitor_id', selectedConvo.id);
 
       const uploadRes = await fetch('/api/uploadAttachment', {
         method: 'POST',
