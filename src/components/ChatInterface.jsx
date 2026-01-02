@@ -60,6 +60,8 @@ const StyledForm = styled.form``;
 function ChatInterface({ selectedConvo }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
+  const [attachment, setAttachment] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   useEffect(() => {
     if (!selectedConvo) return;
@@ -104,34 +106,68 @@ function ChatInterface({ selectedConvo }) {
     };
   }, [selectedConvo]);
 
-  async function sendMessage(e) {
-    e.preventDefault();
-    if (!input) return;
+  const handleSelectFile = (file) => {
+    if (!file) return;
 
-    try {
-      const res = await fetch('/api/sendMessage', {
+    setAttachment(file);
+
+    if (file.type.startsWith('image/')) {
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    } else {
+      setPreviewUrl(null);
+    }
+  };
+
+  const clearAttachment = () => {
+    setAttachment(null);
+    setPreviewUrl(null);
+  };
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    if (!input && !attachment) return;
+
+    let fileData = null;
+
+    if (attachment) {
+      const formData = new FormData();
+      formData.append('file', attachment);
+      formData.append('visitor_id', visitorId);
+
+      const uploadRes = await fetch('/api/uploadAttachment', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_name: selectedConvo.name,
-          message: input,
-          sender_type: 'admin',
-          visitor_id: selectedConvo.id,
-        }),
+        body: formData,
       });
 
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setInput('');
-
-        // append new message
-        // setMessages()
-      }
-    } catch (error) {
-      console.error(error);
+      fileData = await uploadRes.json();
     }
-  }
+
+    // Send message (text + optional file)
+    await fetch('/api/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_name: selectedConvo.name,
+        message: input || null,
+        sender_type: 'admin',
+        visitorId: selectedConvo.id,
+        type: attachment
+          ? attachment.type.startsWith('image')
+            ? 'image'
+            : 'file'
+          : 'text',
+        file_url: fileData?.url,
+        file_name: fileData?.name,
+        file_mime: fileData?.mime,
+      }),
+    });
+
+    // Reset UI
+    setInput('');
+    clearAttachment();
+  };
 
   if (!selectedConvo) return <p>Select a conversation from the left</p>;
 
@@ -162,6 +198,10 @@ function ChatInterface({ selectedConvo }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
+          />
+          <input
+            type="file"
+            onChange={(e) => handleSelectFile(e.target.files[0])}
           />
           <button className="btn btn-primary" type="submit">
             <FontAwesomeIcon icon={faPaperPlane} />
