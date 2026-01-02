@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatInterface = styled.div`
   height: 400px;
@@ -208,6 +209,20 @@ function ChatInterface({ selectedConvo }) {
           </MessageBubble>
         ))}
       </Messages>
+
+      {/* File Preview */}
+      {attachment && (
+        <PreviewContainer>
+          {previewUrl ? (
+            <img src={previewUrl} width="100" />
+          ) : (
+            <div>{attachment.name}</div>
+          )}
+          <StyledButton type="button" onClick={clearAttachment}>
+            <FontAwesomeIcon icon={faXmark} />
+          </StyledButton>
+        </PreviewContainer>
+      )}
 
       <Bottom>
         <StyledForm onSubmit={sendMessage}>
