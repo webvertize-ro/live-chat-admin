@@ -99,12 +99,9 @@ function ConversationsList({ onSelectedConvo }) {
           <input
             className="form-control me-2"
             type="search"
-            placeholder="Search"
+            placeholder="Caută"
             aria-label="Search"
           ></input>
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
         </form>
       </ConversationsSearchBar>
       {conversations.map((visitor, i) => (
