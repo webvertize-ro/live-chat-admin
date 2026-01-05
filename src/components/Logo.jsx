@@ -15,14 +15,14 @@ const LogoTextSubtext = styled.div``;
 const LogoText = styled.div`
   font-family: 'EspumaPro-Bold';
   color: hsl(162, 70%, 37%);
-  font-size: 3.2rem;
+  font-size: 2rem;
   font-family: 'EspumaPro-Bold';
 `;
 
 const LogoSubText = styled.span`
   margin-top: -12px;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 0.8rem;
 `;
 
 function Logo() {
