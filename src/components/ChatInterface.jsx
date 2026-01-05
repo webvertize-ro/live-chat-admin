@@ -75,16 +75,25 @@ const CustomLabel = styled.label`
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
 `;
 
-const FileUploadInput = styled.input`
-  display: none;
+const InputMessage = styled.input`
+  flex: 20;
 `;
 
 const SendingButton = styled.button`
   background-color: rgb(28, 160, 121);
   color: #fff;
   border: none;
+  flex: 2;
+`;
+
+const FileUploadInput = styled.input`
+  display: none;
 `;
 
 const PreviewContainer = styled.div`
@@ -268,7 +277,7 @@ function ChatInterface({ selectedConvo }) {
           <CustomLabel for="file-upload">
             <FontAwesomeIcon icon={faPaperclip} />
           </CustomLabel>
-          <input
+          <InputMessage
             type="text"
             name="message"
             placeholder="Type your message here..."
