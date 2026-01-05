@@ -80,8 +80,9 @@ const FileUploadInput = styled.input`
 `;
 
 const SendingButton = styled.button`
-  background-color: rgb(79, 143, 246);
+  background-color: rgb(28, 160, 121);
   color: #fff;
+  border: none;
 `;
 
 const PreviewContainer = styled.div`
