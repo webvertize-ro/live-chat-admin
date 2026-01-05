@@ -8,7 +8,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 const StyledChatInterface = styled.div`
   width: 500px;
   flex: 4;
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -16,6 +15,8 @@ const StyledChatInterface = styled.div`
 
 const Header = styled.div`
   display: flex;
+  align-items: center;
+  gap: 1rem;
   height: 50px;
 `;
 
