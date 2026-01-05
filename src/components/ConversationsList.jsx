@@ -11,6 +11,19 @@ const StyledConversationsList = styled.div`
   max-height: 650px;
   overflow-y: scroll;
   flex: 1.25;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(116, 164, 255, 0.352);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #1ca079;
+    outline: 1px solid slategrey;
+  }
 `;
 
 const Conversation = styled.div`
