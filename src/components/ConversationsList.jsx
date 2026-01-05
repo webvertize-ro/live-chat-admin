@@ -26,7 +26,9 @@ const StyledConversationsList = styled.div`
   }
 `;
 
-const ConversationsSearchBar = styled.div``;
+const ConversationsSearchBar = styled.div`
+  padding: 1rem;
+`;
 
 const Conversation = styled.div`
   padding: 1rem;
