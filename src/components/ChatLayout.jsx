@@ -19,7 +19,7 @@ function ChatLayout() {
   return (
     <>
       <Navigation />
-      <StyledChatLayout className="container">
+      <StyledChatLayout>
         <ConversationsList onSelectedConvo={handleSelectedConvo} />
         <ChatInterface selectedConvo={selectedConvo} />
       </StyledChatLayout>
