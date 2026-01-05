@@ -10,7 +10,7 @@ const StyledConversationsList = styled.div`
   gap: 0.5rem;
   max-height: 650px;
   overflow-y: scroll;
-  flex: 2;
+  flex: 1.25;
 `;
 
 const Conversation = styled.div`
