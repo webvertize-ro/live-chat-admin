@@ -10,7 +10,7 @@ const StyledConversationsList = styled.div`
   gap: 0.5rem;
   max-height: 650px;
   overflow-y: scroll;
-  flex: 1.25;
+  flex: 1.5;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -34,6 +34,11 @@ const Conversation = styled.div`
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
 `;
 
+const NameLastSeen = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
 const Name = styled.div`
   display: flex;
   gap: 0.2rem;
@@ -42,8 +47,6 @@ const Name = styled.div`
 const LastSeen = styled.div`
   font-size: 0.75rem;
 `;
-
-const NameLastSeen = styled.div``;
 
 const ConversationAvatar = styled.div`
   background-color: lightgrey;
@@ -76,7 +79,7 @@ const ConversationName = styled.div`
 
 const ConversationPhoneNumber = styled.div`
   display: flex;
-  gap: 0.25rem;
+  gap: 0.5rem;
 `;
 
 const ConversationLastMessage = styled.div``;
