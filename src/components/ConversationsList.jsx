@@ -67,6 +67,8 @@ const ConversationPhoneNumber = styled.div`
   display: flex;
 `;
 
+const ConversationLastMessage = styled.div``;
+
 function ConversationsList({ onSelectedConvo }) {
   const { loading, conversations, error } = useConversations();
 
@@ -82,13 +84,21 @@ function ConversationsList({ onSelectedConvo }) {
           </ConversationAvatar>
           <ConversationInfo>
             <ConversationName>
-              <strong>Nume: </strong>
-              <div>{visitor.name}</div>
+              <div>
+                <div>
+                  <strong>Nume: </strong>
+                  <div>{visitor.name}</div>
+                </div>
+                <div>acum 2 min</div>
+              </div>
             </ConversationName>
             <ConversationPhoneNumber>
               <strong>Phone Number:</strong>
               <div>{visitor.phone_number}</div>
             </ConversationPhoneNumber>
+            <ConversationLastMessage>
+              <div>{'ultimul mesaj din conversatie'}</div>
+            </ConversationLastMessage>
           </ConversationInfo>
           <ConversationNotification>3</ConversationNotification>
         </Conversation>
