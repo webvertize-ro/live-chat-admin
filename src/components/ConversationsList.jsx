@@ -14,17 +14,11 @@ const StyledConversationsList = styled.div`
 `;
 
 const Conversation = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
   border: 1px solid black;
   padding: 1rem;
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
 `;
 
 const ConversationAvatar = styled.div``;
@@ -34,6 +28,13 @@ const ConversationInfo = styled.div``;
 const ConversationNotification = styled.div`
   background-color: blueviolet;
   color: #fff;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ConversationName = styled.div`
