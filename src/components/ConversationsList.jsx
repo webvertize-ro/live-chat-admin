@@ -34,6 +34,14 @@ const Conversation = styled.div`
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
 `;
 
+const Name = styled.div``;
+
+const LastSeen = styled.div`
+  font-size: 0.75rem;
+`;
+
+const NameLastSeen = styled.div``;
+
 const ConversationAvatar = styled.div`
   background-color: lightgrey;
   padding: 0.75rem;
@@ -84,13 +92,13 @@ function ConversationsList({ onSelectedConvo }) {
           </ConversationAvatar>
           <ConversationInfo>
             <ConversationName>
-              <div>
-                <div>
+              <NameLastSeen>
+                <Name>
                   <strong>Nume: </strong>
                   <div>{visitor.name}</div>
-                </div>
-                <div>acum 2 min</div>
-              </div>
+                </Name>
+                <LastSeen>acum 2 min</LastSeen>
+              </NameLastSeen>
             </ConversationName>
             <ConversationPhoneNumber>
               <strong>Phone Number:</strong>
