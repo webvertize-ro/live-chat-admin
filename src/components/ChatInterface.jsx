@@ -6,7 +6,6 @@ import { supabase } from '../db/db';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatInterface = styled.div`
-  height: 400px;
   width: 500px;
   flex: 4;
   border: 1px solid green;
