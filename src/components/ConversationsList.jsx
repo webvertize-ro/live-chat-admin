@@ -96,12 +96,13 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
+      <h4>Conversații</h4>
       <ConversationsSearchBar>
         <form className="d-flex">
           <input
             className="form-control me-2"
             type="search"
-            placeholder="Caută"
+            placeholder="Caută..."
             aria-label="Search"
           ></input>
         </form>
