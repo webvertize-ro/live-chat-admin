@@ -78,7 +78,7 @@ const CustomLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 2;
+  flex: 1;
 `;
 
 const InputMessage = styled.input`
@@ -89,7 +89,7 @@ const SendingButton = styled.button`
   background-color: rgb(28, 160, 121);
   color: #fff;
   border: none;
-  flex: 2;
+  flex: 1;
 `;
 
 const FileUploadInput = styled.input`
