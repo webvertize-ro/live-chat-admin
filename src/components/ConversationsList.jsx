@@ -21,7 +21,15 @@ const Conversation = styled.div`
   gap: 0.5rem;
 `;
 
-const ConversationAvatar = styled.div``;
+const ConversationAvatar = styled.div`
+  background-color: lightgrey;
+  padding: 0.75rem;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const ConversationInfo = styled.div``;
 
