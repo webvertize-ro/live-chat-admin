@@ -67,6 +67,7 @@ const Bottom = styled.div`
 
 const StyledForm = styled.form`
   display: flex;
+  height: 100%;
 `;
 
 const CustomLabel = styled.label`
