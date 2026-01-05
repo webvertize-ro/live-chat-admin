@@ -18,7 +18,7 @@ const Header = styled.div`
   align-items: center;
   gap: 1rem;
   height: 50px;
-  border-radius: 1px solid #1ca079;
+  border-bottom: 1px solid #1ca079;
   padding: 0.75rem;
 `;
 
