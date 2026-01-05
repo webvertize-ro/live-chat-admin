@@ -26,6 +26,11 @@ const StyledConversationsList = styled.div`
   }
 `;
 
+const StyledH4 = styled.h4`
+  padding-left: 2rem;
+  padding-top: 1rem;
+`;
+
 const ConversationsSearchBar = styled.div`
   padding: 1rem;
 `;
@@ -96,7 +101,7 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <h4>Conversații</h4>
+      <StyledH4>Conversații</StyledH4>
       <ConversationsSearchBar>
         <form className="d-flex">
           <input
