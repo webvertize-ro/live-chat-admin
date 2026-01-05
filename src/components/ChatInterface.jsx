@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -15,11 +15,13 @@ const StyledChatInterface = styled.div`
 `;
 
 const Header = styled.div`
-  background-color: blue;
-  color: white;
   display: flex;
   height: 50px;
 `;
+
+const HeaderName = styled.div``;
+
+const HeaderPhone = styled.div``;
 
 const Messages = styled.div`
   display: flex;
@@ -201,8 +203,13 @@ function ChatInterface({ selectedConvo }) {
   return (
     <StyledChatInterface>
       <Header>
-        <div>Name: {selectedConvo.name}</div>
-        <div>Phone Number: {selectedConvo.phone_number}</div>
+        <div>
+          <FontAwesomeIcon icon={faUser} />
+        </div>
+        <div>
+          <HeaderName>{selectedConvo.name}</HeaderName>
+          <HeaderPhone>Phone Number: {selectedConvo.phone_number}</HeaderPhone>
+        </div>
       </Header>
       <Messages>
         {messages?.map((msg, i) => (
