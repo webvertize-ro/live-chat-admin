@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatInterface = styled.div`
   width: 500px;
@@ -263,7 +263,9 @@ function ChatInterface({ selectedConvo }) {
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
           />
-          <CustomLabel for="file-upload">custom upload</CustomLabel>
+          <CustomLabel for="file-upload">
+            <FontAwesomeIcon icon={faPaperclip} />
+          </CustomLabel>
           <FileUploadInput
             id="file-upload"
             type="file"
