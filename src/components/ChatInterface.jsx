@@ -10,11 +10,11 @@ const StyledChatInterface = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
 `;
 
 const Header = styled.div`
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 1rem;
   height: 50px;
@@ -32,6 +32,8 @@ const Messages = styled.div`
   gap: 0.8rem;
   height: 400px;
   overflow-y: scroll;
+  padding: 1.5rem;
+  flex: 10;
 `;
 
 const MessageBubble = styled.div`
@@ -58,7 +60,9 @@ const MessageDate = styled.div`
   font-size: 0.7rem;
 `;
 
-const Bottom = styled.div``;
+const Bottom = styled.div`
+  flex: 2;
+`;
 
 const StyledForm = styled.form``;
 
