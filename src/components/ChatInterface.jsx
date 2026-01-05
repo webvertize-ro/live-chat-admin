@@ -64,7 +64,9 @@ const Bottom = styled.div`
   flex: 2;
 `;
 
-const StyledForm = styled.form``;
+const StyledForm = styled.form`
+  display: flex;
+`;
 
 const CustomLabel = styled.label`
   border: 1px solid #ccc;
@@ -255,6 +257,9 @@ function ChatInterface({ selectedConvo }) {
 
       <Bottom>
         <StyledForm onSubmit={sendMessage}>
+          <CustomLabel for="file-upload">
+            <FontAwesomeIcon icon={faPaperclip} />
+          </CustomLabel>
           <input
             type="text"
             name="message"
@@ -263,9 +268,6 @@ function ChatInterface({ selectedConvo }) {
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
           />
-          <CustomLabel for="file-upload">
-            <FontAwesomeIcon icon={faPaperclip} />
-          </CustomLabel>
           <FileUploadInput
             id="file-upload"
             type="file"
