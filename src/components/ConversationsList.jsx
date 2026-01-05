@@ -41,6 +41,10 @@ const Conversation = styled.div`
   align-items: center;
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const NameLastSeen = styled.div`
