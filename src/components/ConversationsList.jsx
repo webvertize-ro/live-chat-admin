@@ -47,7 +47,7 @@ const ConversationAvatar = styled.div`
 const ConversationInfo = styled.div``;
 
 const ConversationNotification = styled.div`
-  background-color: blueviolet;
+  background-color: #89b11c;
   color: #fff;
   padding: 0.25rem;
   border-radius: 50%;
