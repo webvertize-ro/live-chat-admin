@@ -17,11 +17,13 @@ function ChatLayout() {
   }
 
   return (
-    <StyledChatLayout className="container">
+    <>
       <Navigation />
-      <ConversationsList onSelectedConvo={handleSelectedConvo} />
-      <ChatInterface selectedConvo={selectedConvo} />
-    </StyledChatLayout>
+      <StyledChatLayout className="container">
+        <ConversationsList onSelectedConvo={handleSelectedConvo} />
+        <ChatInterface selectedConvo={selectedConvo} />
+      </StyledChatLayout>
+    </>
   );
 }
 
