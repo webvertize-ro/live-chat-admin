@@ -17,12 +17,16 @@ const Conversation = styled.div`
   border: 1px solid black;
   padding: 1rem;
   display: flex;
-  flex-direction: column;
 `;
 
 const ConversationAvatar = styled.div``;
 
 const ConversationInfo = styled.div``;
+
+const ConversationNotification = styled.div`
+  background-color: blueviolet;
+  color: #fff;
+`;
 
 const ConversationName = styled.div`
   display: flex;
@@ -55,6 +59,7 @@ function ConversationsList({ onSelectedConvo }) {
               <div>{visitor.phone_number}</div>
             </ConversationPhoneNumber>
           </ConversationInfo>
+          <ConversationNotification>3</ConversationNotification>
         </Conversation>
       ))}
     </StyledConversationsList>
