@@ -29,7 +29,6 @@ const StyledConversationsList = styled.div`
 const Conversation = styled.div`
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
