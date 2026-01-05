@@ -14,11 +14,11 @@ const StyledConversationsList = styled.div`
 `;
 
 const Conversation = styled.div`
-  border: 1px solid black;
   padding: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border-bottom: 1px solid rgba(225, 231, 239, 0.5);
 `;
 
 const ConversationAvatar = styled.div`
@@ -73,7 +73,7 @@ function ConversationsList({ onSelectedConvo }) {
               <div>{visitor.name}</div>
             </ConversationName>
             <ConversationPhoneNumber>
-              <strong>Phone Number</strong>
+              <strong>Phone Number:</strong>
               <div>{visitor.phone_number}</div>
             </ConversationPhoneNumber>
           </ConversationInfo>
