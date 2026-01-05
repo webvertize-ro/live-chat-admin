@@ -43,6 +43,7 @@ const ConversationNotification = styled.div`
   width: 20px;
   align-items: center;
   justify-content: center;
+  align-self: flex-start;
 `;
 
 const ConversationName = styled.div`
