@@ -26,6 +26,8 @@ const StyledConversationsList = styled.div`
   }
 `;
 
+const ConversationsSearchBar = styled.div``;
+
 const Conversation = styled.div`
   padding: 1rem;
   display: flex;
@@ -92,6 +94,19 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
+      <ConversationsSearchBar>
+        <form className="d-flex">
+          <input
+            className="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          ></input>
+          <button className="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
+      </ConversationsSearchBar>
       {conversations.map((visitor, i) => (
         <Conversation key={i} onClick={() => onSelectedConvo(visitor)}>
           <ConversationAvatar>
