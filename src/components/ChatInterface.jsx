@@ -79,6 +79,13 @@ const FileUploadInput = styled.input`
   display: none;
 `;
 
+const AttachmentButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+`;
+
 const PreviewContainer = styled.div`
   margin-bottom: 0.5rem;
   background: #fff;
@@ -273,9 +280,9 @@ function ChatInterface({ selectedConvo }) {
             type="file"
             onChange={(e) => handleSelectFile(e.target.files[0])}
           />
-          <button className="btn btn-primary" type="submit">
+          <AttachmentButton className="btn btn-primary" type="submit">
             <FontAwesomeIcon icon={faPaperPlane} />
-          </button>
+          </AttachmentButton>
         </StyledForm>
       </Bottom>
     </StyledChatInterface>
