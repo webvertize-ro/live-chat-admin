@@ -34,7 +34,10 @@ const Conversation = styled.div`
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
 `;
 
-const Name = styled.div``;
+const Name = styled.div`
+  display: flex;
+  gap: 0.2rem;
+`;
 
 const LastSeen = styled.div`
   font-size: 0.75rem;
@@ -73,6 +76,7 @@ const ConversationName = styled.div`
 
 const ConversationPhoneNumber = styled.div`
   display: flex;
+  gap: 0.25rem;
 `;
 
 const ConversationLastMessage = styled.div``;
