@@ -61,7 +61,7 @@ const MessageDate = styled.div`
 `;
 
 const Bottom = styled.div`
-  flex: 2;
+  flex: 1;
 `;
 
 const StyledForm = styled.form`
