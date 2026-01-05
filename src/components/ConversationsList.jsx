@@ -5,17 +5,25 @@ import useConversations from '../hooks/useConversations';
 const StyledConversationsList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   max-height: 650px;
   overflow-y: scroll;
   flex: 1;
 `;
 
-const Visitor = styled.div`
+const Conversation = styled.div`
   border: 1px solid black;
   padding: 1rem;
   display: flex;
   flex-direction: column;
+`;
+
+const ConversationName = styled.div`
+  display: flex;
+`;
+
+const ConversationPhoneNumber = styled.div`
+  display: flex;
 `;
 
 function ConversationsList({ onSelectedConvo }) {
@@ -27,16 +35,16 @@ function ConversationsList({ onSelectedConvo }) {
   return (
     <StyledConversationsList>
       {conversations.map((visitor, i) => (
-        <Visitor key={i} onClick={() => onSelectedConvo(visitor)}>
-          <div>
-            <strong>Name</strong>
+        <Conversation key={i} onClick={() => onSelectedConvo(visitor)}>
+          <ConversationName>
+            <strong>Nume: </strong>
             <div>{visitor.name}</div>
-          </div>
-          <div>
+          </ConversationName>
+          <ConversationPhoneNumber>
             <strong>Phone Number</strong>
             <div>{visitor.phone_number}</div>
-          </div>
-        </Visitor>
+          </ConversationPhoneNumber>
+        </Conversation>
       ))}
     </StyledConversationsList>
   );
