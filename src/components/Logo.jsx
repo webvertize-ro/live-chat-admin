@@ -1,18 +1,38 @@
+import styled from 'styled-components';
 import edionTransLogo from '../assets/ediontrans_logo.svg';
+
+const LogoTotal = styled.div`
+  display: flex;
+  gap: 0.25rem;
+`;
+
+const LogoImage = styled.img`
+  width: 50px;
+`;
+
+const LogoTextSubtext = styled.div``;
+
+const LogoText = styled.div`
+  font-family: 'EspumaPro-Bold';
+`;
+
+const LogoSubText = styled.span``;
 
 function Logo() {
   return (
     <div>
-      <a
+      <LogoTotal
         className="navbar-brand navbar-brand-custom logo-link"
         href="index.html"
       >
-        <img src={edionTransLogo} alt="Logo Edion Trans" width="50" />
-        <div className="d-flex flex-column">
-          <span className="logo-text">Edion Trans</span>
-          <small className="logo-subtext ms-1">Servicii de transport</small>
-        </div>
-      </a>
+        <LogoImage src={edionTransLogo} alt="Logo Edion Trans" />
+        <LogoTextSubtext className="d-flex flex-column">
+          <LogoText className="logo-text">Edion Trans</LogoText>
+          <LogoSubText className="logo-subtext ms-1">
+            Servicii de transport
+          </LogoSubText>
+        </LogoTextSubtext>
+      </LogoTotal>
     </div>
   );
 }
