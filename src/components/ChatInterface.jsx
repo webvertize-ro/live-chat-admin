@@ -192,7 +192,12 @@ function ChatInterface({ selectedConvo }) {
     setPreviewUrl(null);
   };
 
-  if (!selectedConvo) return <p>Select a conversation from the left</p>;
+  if (!selectedConvo)
+    return (
+      <StyledChatInterface>
+        <p>Select a conversation from the left</p>
+      </StyledChatInterface>
+    );
 
   return (
     <StyledChatInterface>
