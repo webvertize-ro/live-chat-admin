@@ -20,8 +20,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<ChatLayout />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<ChatLayout />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

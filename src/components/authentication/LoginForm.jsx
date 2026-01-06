@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { login } from './apiAuth';
 import { useLogin } from './useLogin';
 import LoadingComponent from '../LoadingComponent';
 
