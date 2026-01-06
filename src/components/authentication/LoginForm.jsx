@@ -30,7 +30,7 @@ function LoginForm() {
       </div>
       <div className="d-flex flex-column mb-4">
         <label htmlFor="password" className="form-label">
-          Password
+          Parolă
         </label>
         <input
           type="password"
@@ -45,9 +45,9 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="btn btn-primary w-100"
+          className="btn btn-success w-100"
         >
-          {!isLoading ? 'Log in' : <LoadingComponent />}
+          {!isLoading ? 'Conectare' : <LoadingComponent />}
         </button>
       </div>
     </form>

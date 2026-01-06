@@ -14,7 +14,7 @@ function Login() {
   return (
     <LoginContainer>
       <Logo />
-      <h3>Log in to your account</h3>
+      <h3>Conectare pagina de admin</h3>
       <LoginForm />
     </LoginContainer>
   );
