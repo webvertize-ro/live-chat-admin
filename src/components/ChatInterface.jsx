@@ -280,7 +280,10 @@ function ChatInterface({ selectedConvo }) {
       {attachment && (
         <PreviewContainer>
           {previewUrl ? (
-            <img src={previewUrl} width="100" />
+            <>
+              <img src={previewUrl} width="100" />
+              {console.log('attachment: ', attachment)}
+            </>
           ) : (
             <div>{attachment.name}</div>
           )}
