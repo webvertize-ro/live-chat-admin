@@ -9,6 +9,8 @@ import LoadingComponent from './LoadingComponent';
 const StyledChatInterface = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: ${(props) => (props.noConvo ? 'center' : '')};
+  justify-content: ${(props) => (props.noConvo ? 'center' : '')};
   grid-area: main;
   overflow-y: scroll;
 `;
@@ -243,7 +245,7 @@ function ChatInterface({ selectedConvo }) {
 
   if (!selectedConvo)
     return (
-      <StyledChatInterface>
+      <StyledChatInterface noConvo={!selectedConvo ? true : false}>
         <p>Select a conversation from the left</p>
       </StyledChatInterface>
     );
