@@ -9,7 +9,6 @@ const StyledChatInterface = styled.div`
   display: flex;
   flex-direction: column;
   grid-area: main;
-  padding: 16px;
   overflow-y: scroll;
 `;
 
@@ -113,11 +112,13 @@ function ChatInterface({ selectedConvo }) {
   const [input, setInput] = useState();
   const [attachment, setAttachment] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [loadingMessages, setLoadingMessages] = useState(false);
 
   useEffect(() => {
     if (!selectedConvo) return;
 
     async function fetchMessages() {
+      setLoadingMessages(true);
       try {
         const res = await fetch(
           `api/getMessages?visitorId=${selectedConvo.id}`
@@ -127,6 +128,7 @@ function ChatInterface({ selectedConvo }) {
       } catch (error) {
         console.error(error);
       }
+      setLoadingMessages(false);
     }
 
     fetchMessages();
@@ -244,25 +246,27 @@ function ChatInterface({ selectedConvo }) {
         </div>
       </Header>
       <Messages>
-        {messages?.map((msg, i) => (
-          <MessageBubble key={i} senderType={msg.sender_type}>
-            {console.log('message is: ', msg)}
-            <strong>{msg.user_name}:</strong>
-            <MessageContent>
-              {/* messages with files and with images */}
-              {msg.file_url && msg.file_mime?.startsWith('image/') ? (
-                <img src={msg.file_url} alt={msg.file_name} width="100" />
-              ) : msg.file_url ? (
-                <a href={msg.file_url} target="_blank" rel="noreferref">
-                  {msg.file_name}
-                </a>
-              ) : null}
-              {/* text messages */}
-              {msg.message && <Message>{msg.message}</Message>}
-              <MessageDate>{msg.created_at}</MessageDate>
-            </MessageContent>
-          </MessageBubble>
-        ))}
+        {loadingMessages
+          ? 'Messages are loading...'
+          : messages?.map((msg, i) => (
+              <MessageBubble key={i} senderType={msg.sender_type}>
+                {console.log('message is: ', msg)}
+                <strong>{msg.user_name}:</strong>
+                <MessageContent>
+                  {/* messages with files and with images */}
+                  {msg.file_url && msg.file_mime?.startsWith('image/') ? (
+                    <img src={msg.file_url} alt={msg.file_name} width="100" />
+                  ) : msg.file_url ? (
+                    <a href={msg.file_url} target="_blank" rel="noreferref">
+                      {msg.file_name}
+                    </a>
+                  ) : null}
+                  {/* text messages */}
+                  {msg.message && <Message>{msg.message}</Message>}
+                  <MessageDate>{msg.created_at}</MessageDate>
+                </MessageContent>
+              </MessageBubble>
+            ))}
       </Messages>
 
       {/* File Preview */}
