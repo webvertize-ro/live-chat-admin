@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 const StyledChatLayout = styled.div`
   display: flex;
+  height: 100vh;
 `;
 
 function ChatLayout() {

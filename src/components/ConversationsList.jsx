@@ -8,7 +8,6 @@ const StyledConversationsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-height: 650px;
   overflow-y: scroll;
   flex: 1.5;
 
