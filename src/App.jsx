@@ -6,10 +6,18 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Login from './pages/Login';
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
+
 function App() {
   return (
     <div>
-      <QueryClientProvider client={QueryClient}>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<ChatLayout />} />
