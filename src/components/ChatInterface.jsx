@@ -6,7 +6,6 @@ import { supabase } from '../db/db';
 import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatInterface = styled.div`
-  width: 500px;
   flex: 4;
   display: flex;
   flex-direction: column;
