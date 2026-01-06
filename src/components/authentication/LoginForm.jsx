@@ -16,27 +16,37 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="d-flex flex-column mb-4">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="form-label">
+          Email
+        </label>
         <input
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
+          className="form-control"
         />
       </div>
       <div className="d-flex flex-column mb-4">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="form-label">
+          Password
+        </label>
         <input
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
+          className="form-control"
         />
       </div>
       <div className="mb-4">
-        <button type="submit" disabled={isLoading}>
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="btn btn-primary w-100"
+        >
           {!isLoading ? 'Log in' : <LoadingComponent />}
         </button>
       </div>
