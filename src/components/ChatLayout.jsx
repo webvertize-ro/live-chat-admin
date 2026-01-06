@@ -2,7 +2,6 @@ import ConversationsList from './ConversationsList';
 import ChatInterface from './ChatInterface';
 import styled from 'styled-components';
 import { useState } from 'react';
-import Navigation from './Navigation';
 
 const StyledChatLayout = styled.div`
   display: flex;
