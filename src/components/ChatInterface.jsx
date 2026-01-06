@@ -6,11 +6,11 @@ import { supabase } from '../db/db';
 import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatInterface = styled.div`
-  flex: 4;
   display: flex;
   flex-direction: column;
   grid-area: main;
   padding: 16px;
+  overflow-y: scroll;
 `;
 
 const Header = styled.div`
@@ -177,6 +177,15 @@ function ChatInterface({ selectedConvo }) {
       fileData = await uploadRes.json();
     }
 
+    // determine the type of message
+    let messageType = 'text';
+
+    if (attachment && input) {
+      messageType = 'mixed';
+    } else if (attachment) {
+      messageType = attachment.type.startsWith('image') ? 'image' : 'file';
+    }
+
     // Send message (text + optional file)
     await fetch('/api/sendMessage', {
       method: 'POST',
@@ -186,11 +195,7 @@ function ChatInterface({ selectedConvo }) {
         message: input || null,
         sender_type: 'admin',
         visitor_id: selectedConvo.id,
-        type: attachment
-          ? attachment.type.startsWith('image')
-            ? 'image'
-            : 'file'
-          : 'text',
+        type: messageType,
         file_url: fileData?.url,
         file_name: fileData?.name,
         file_mime: fileData?.mime,
@@ -244,15 +249,16 @@ function ChatInterface({ selectedConvo }) {
             {console.log('message is: ', msg)}
             <strong>{msg.user_name}:</strong>
             <MessageContent>
-              {msg.type === 'text' && <Message>{msg.message}</Message>}
-              {msg.type === 'image' && (
+              {/* messages with files and with images */}
+              {msg.file_url && msg.file_mime?.startsWith('image/') ? (
                 <img src={msg.file_url} alt={msg.file_name} width="100" />
-              )}
-              {msg.type === 'file' && (
-                <a href={msg.file_url} target="_blank">
+              ) : msg.file_url ? (
+                <a href={msg.file_url} target="_blank" rel="noreferref">
                   {msg.file_name}
                 </a>
-              )}
+              ) : null}
+              {/* text messages */}
+              {msg.message && <Message>{msg.message}</Message>}
               <MessageDate>{msg.created_at}</MessageDate>
             </MessageContent>
           </MessageBubble>
