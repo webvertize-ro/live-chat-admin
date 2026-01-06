@@ -102,6 +102,7 @@ const FileUploadInput = styled.input`
 const PreviewContainer = styled.div`
   padding: 0.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: lightgray;
@@ -286,19 +287,20 @@ function ChatInterface({ selectedConvo }) {
       {/* File Preview */}
       {attachment && (
         <PreviewContainer>
-          <h5>Previzualizare </h5>
-          {previewUrl ? (
-            <div className="d-flex flex-column align-items-center gap-1">
-              <StyledPreviewImg src={previewUrl} width="120" />
+          <h5>Previzualizare {previewUrl ? 'imagine' : 'document'}</h5>
+          <div className="d-flex align-items-center justify-content-center">
+            {previewUrl ? (
+              <div className="d-flex flex-column align-items-center gap-1">
+                <StyledPreviewImg src={previewUrl} width="120" />
+                <div>{attachment.name}</div>
+              </div>
+            ) : (
               <div>{attachment.name}</div>
-              {console.log('attachment: ', attachment)}
-            </div>
-          ) : (
-            <div>{attachment.name}</div>
-          )}
-          <StyledButton type="button" onClick={clearAttachment}>
-            <FontAwesomeIcon icon={faXmark} />
-          </StyledButton>
+            )}
+            <StyledButton type="button" onClick={clearAttachment}>
+              <FontAwesomeIcon icon={faXmark} />
+            </StyledButton>
+          </div>
         </PreviewContainer>
       )}
 
