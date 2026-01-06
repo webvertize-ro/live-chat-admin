@@ -47,7 +47,7 @@ function LoginForm() {
           disabled={isLoading}
           className="btn btn-success w-100"
         >
-          {!isLoading ? 'Conectare' : <LoadingComponent />}
+          {!isLoading ? 'Autentificare' : '...'}
         </button>
       </div>
     </form>
