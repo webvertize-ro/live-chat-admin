@@ -15,7 +15,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-4">
+      <div className="d-flex flex-column mb-4">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -25,7 +25,7 @@ function LoginForm() {
           disabled={isLoading}
         />
       </div>
-      <div className="mb-4">
+      <div className="d-flex flex-column mb-4">
         <label htmlFor="password">Password</label>
         <input
           type="password"
