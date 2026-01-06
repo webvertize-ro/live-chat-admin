@@ -86,6 +86,7 @@ const CustomLabel = styled.label`
 
 const InputMessage = styled.input`
   flex: 20;
+  border-radius: 0 !important;
 `;
 
 const SendingButton = styled.button`
