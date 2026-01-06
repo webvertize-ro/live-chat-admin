@@ -21,7 +21,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/login" element={<ChatLayout />} />
+            <Route path="/dashboard" element={<ChatLayout />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
