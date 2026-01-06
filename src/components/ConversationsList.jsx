@@ -114,7 +114,6 @@ function ConversationsList({ onSelectedConvo }) {
             placeholder="Caută..."
             aria-label="Search"
           ></input>
-          <div>test</div>
         </form>
       </ConversationsSearchBar>
       {conversations.map((visitor, i) => (
