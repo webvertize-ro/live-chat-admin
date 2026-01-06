@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { login } from './apiAuth';
+import { useLogin } from './useLogin';
+import LoadingComponent from '../LoadingComponent';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-
     login({ email, password });
   }
 
@@ -21,6 +23,7 @@ function LoginForm() {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
       </div>
       <div className="mb-4">
@@ -30,10 +33,13 @@ function LoginForm() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
       </div>
       <div className="mb-4">
-        <button type="submit">Log in</button>
+        <button type="submit" disabled={isLoading}>
+          {!isLoading ? 'Log in' : <LoadingComponent />}
+        </button>
       </div>
     </form>
   );
