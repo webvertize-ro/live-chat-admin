@@ -4,6 +4,7 @@ import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
 import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import LoadingComponent from './LoadingComponent';
 
 const StyledChatInterface = styled.div`
   display: flex;
@@ -34,6 +35,8 @@ const Messages = styled.div`
   overflow-y: scroll;
   padding: 1.5rem;
   flex: 10;
+  justify-content: ${(props) => (props.loadingMessages ? 'center' : 'unset')};
+  align-items: ${(props) => (props.loadingMessages ? 'center' : 'unset')};
 `;
 
 const MessageBubble = styled.div`
@@ -245,28 +248,30 @@ function ChatInterface({ selectedConvo }) {
           <HeaderPhone>Phone Number: {selectedConvo.phone_number}</HeaderPhone>
         </div>
       </Header>
-      <Messages>
-        {loadingMessages
-          ? 'Messages are loading...'
-          : messages?.map((msg, i) => (
-              <MessageBubble key={i} senderType={msg.sender_type}>
-                {console.log('message is: ', msg)}
-                <strong>{msg.user_name}:</strong>
-                <MessageContent>
-                  {/* messages with files and with images */}
-                  {msg.file_url && msg.file_mime?.startsWith('image/') ? (
-                    <img src={msg.file_url} alt={msg.file_name} width="100" />
-                  ) : msg.file_url ? (
-                    <a href={msg.file_url} target="_blank" rel="noreferref">
-                      {msg.file_name}
-                    </a>
-                  ) : null}
-                  {/* text messages */}
-                  {msg.message && <Message>{msg.message}</Message>}
-                  <MessageDate>{msg.created_at}</MessageDate>
-                </MessageContent>
-              </MessageBubble>
-            ))}
+      <Messages loadingMessages={loadingMessages}>
+        {loadingMessages ? (
+          <LoadingComponent />
+        ) : (
+          messages?.map((msg, i) => (
+            <MessageBubble key={i} senderType={msg.sender_type}>
+              {console.log('message is: ', msg)}
+              <strong>{msg.user_name}:</strong>
+              <MessageContent>
+                {/* messages with files and with images */}
+                {msg.file_url && msg.file_mime?.startsWith('image/') ? (
+                  <img src={msg.file_url} alt={msg.file_name} width="100" />
+                ) : msg.file_url ? (
+                  <a href={msg.file_url} target="_blank" rel="noreferref">
+                    {msg.file_name}
+                  </a>
+                ) : null}
+                {/* text messages */}
+                {msg.message && <Message>{msg.message}</Message>}
+                <MessageDate>{msg.created_at}</MessageDate>
+              </MessageContent>
+            </MessageBubble>
+          ))
+        )}
       </Messages>
 
       {/* File Preview */}
