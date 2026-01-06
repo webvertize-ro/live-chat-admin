@@ -18,7 +18,6 @@ function ChatLayout() {
 
   return (
     <>
-      <Navigation />
       <StyledChatLayout>
         <ConversationsList onSelectedConvo={handleSelectedConvo} />
         <ChatInterface selectedConvo={selectedConvo} />
