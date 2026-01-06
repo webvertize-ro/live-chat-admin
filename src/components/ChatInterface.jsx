@@ -100,10 +100,11 @@ const FileUploadInput = styled.input`
 `;
 
 const PreviewContainer = styled.div`
-  margin-bottom: 0.5rem;
-  background: #fff;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
 `;
 
 const StyledButton = styled.button`
@@ -282,7 +283,7 @@ function ChatInterface({ selectedConvo }) {
           {previewUrl ? (
             <>
               <img src={previewUrl} width="100" />
-              {console.log('attachment: ', attachment)}
+              <div>{attachment.name}</div>
             </>
           ) : (
             <div>{attachment.name}</div>
