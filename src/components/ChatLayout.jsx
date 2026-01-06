@@ -9,7 +9,7 @@ const StyledChatLayout = styled.div`
 
   grid-template-rows: 60px 1fr;
 
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 1fr 4fr;
 
   grid-template-areas: 'header header' 'sidebar main';
 `;
