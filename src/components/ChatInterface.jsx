@@ -107,6 +107,10 @@ const PreviewContainer = styled.div`
   background-color: lightgray;
 `;
 
+const StyledPreviewImg = styled.img`
+  border-radius: 0.5rem;
+`;
+
 const StyledButton = styled.button`
   margin-left: 0.5rem;
   border: none;
@@ -283,8 +287,8 @@ function ChatInterface({ selectedConvo }) {
       {attachment && (
         <PreviewContainer>
           {previewUrl ? (
-            <div className="d-flex flex-column gap-1">
-              <img src={previewUrl} width="120" />
+            <div className="d-flex flex-column align-items-center gap-1">
+              <StyledPreviewImg src={previewUrl} width="120" />
               <div>{attachment.name}</div>
             </div>
           ) : (
