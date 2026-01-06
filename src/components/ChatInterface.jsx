@@ -116,6 +116,7 @@ function ChatInterface({ selectedConvo }) {
   const [attachment, setAttachment] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loadingMessages, setLoadingMessages] = useState(false);
+  const [loadingSendMessage, setLoadingSendMessage] = useState(false);
 
   useEffect(() => {
     if (!selectedConvo) return;
@@ -164,6 +165,7 @@ function ChatInterface({ selectedConvo }) {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    setLoadingSendMessage(true);
 
     if (!input && !attachment) return;
 
@@ -206,7 +208,7 @@ function ChatInterface({ selectedConvo }) {
         file_mime: fileData?.mime,
       }),
     });
-
+    setLoadingSendMessage(false);
     // Reset UI
     setInput('');
     clearAttachment();
@@ -307,7 +309,11 @@ function ChatInterface({ selectedConvo }) {
             onChange={(e) => handleSelectFile(e.target.files[0])}
           />
           <SendingButton type="submit">
-            <FontAwesomeIcon icon={faPaperPlane} />
+            {loadingSendMessage ? (
+              <LoadingComponent size={'sm'} />
+            ) : (
+              <FontAwesomeIcon icon={faPaperPlane} />
+            )}
           </SendingButton>
         </StyledForm>
       </Bottom>
