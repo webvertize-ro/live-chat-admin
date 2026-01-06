@@ -10,6 +10,9 @@ const StyledConversationsList = styled.div`
   gap: 0.5rem;
   overflow-y: scroll;
   flex: 1.5;
+  grid-area: sidebar;
+  border-right: 1px solid #e0e0e0;
+  padding: 16px;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
