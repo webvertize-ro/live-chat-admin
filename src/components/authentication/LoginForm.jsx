@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { login } from './apiAuth';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(e) {}
+  function handleSubmit(e) {
+    e.preventDeafult();
+    if (!email || !password) return;
+
+    login({ email, password });
+  }
 
   return (
     <form onSubmit={handleSubmit}>
