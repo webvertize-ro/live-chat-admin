@@ -6,7 +6,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
 
   function handleSubmit(e) {
-    e.preventDeafult();
+    e.preventDefault();
     if (!email || !password) return;
 
     login({ email, password });
