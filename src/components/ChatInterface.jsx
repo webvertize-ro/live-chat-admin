@@ -286,10 +286,12 @@ function ChatInterface({ selectedConvo }) {
       {/* File Preview */}
       {attachment && (
         <PreviewContainer>
+          <h5>Previzualizare </h5>
           {previewUrl ? (
             <div className="d-flex flex-column align-items-center gap-1">
               <StyledPreviewImg src={previewUrl} width="120" />
               <div>{attachment.name}</div>
+              {console.log('attachment: ', attachment)}
             </div>
           ) : (
             <div>{attachment.name}</div>
