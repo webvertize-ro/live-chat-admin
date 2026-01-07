@@ -117,7 +117,7 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <StyledH4>Conversații</StyledH4>
+      <StyledH4>Conversații test</StyledH4>
       <ConversationsSearchBar>
         <form className="d-flex">
           <input
