@@ -101,9 +101,19 @@ const ConversationLastMessage = styled.div``;
 
 function ConversationsList({ onSelectedConvo }) {
   const { loading, conversations, error } = useConversations();
+  const [searchInput, setSearchInput] = useState('');
 
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
+
+  const filteredConversations = conversations.filter((conversation) => {
+    const query = searchInput.toLowerCase();
+
+    return (
+      conversation.name?.toLowerCase().includes(query) ||
+      conversation.phone_number?.toLowerCase().includes(query)
+    );
+  });
 
   return (
     <StyledConversationsList>
@@ -115,10 +125,12 @@ function ConversationsList({ onSelectedConvo }) {
             type="search"
             placeholder="Caută..."
             aria-label="Search"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           ></input>
         </form>
       </ConversationsSearchBar>
-      {conversations.map((visitor, i) => (
+      {filteredConversations.map((visitor, i) => (
         <Conversation key={i} onClick={() => onSelectedConvo(visitor)}>
           <ConversationAvatar>
             <FontAwesomeIcon icon={faUser} />
@@ -144,6 +156,7 @@ function ConversationsList({ onSelectedConvo }) {
           <ConversationNotification>3</ConversationNotification>
         </Conversation>
       ))}
+      {filteredConversations.length === 0 && <p>Nicio conversație găsită.</p>}
     </StyledConversationsList>
   );
 }
