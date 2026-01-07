@@ -2,6 +2,7 @@ import ConversationsList from './ConversationsList';
 import ChatInterface from './ChatInterface';
 import styled from 'styled-components';
 import { useState } from 'react';
+import Logout from './authentication/Logout';
 
 const StyledChatLayout = styled.div`
   display: grid;
@@ -33,7 +34,9 @@ function ChatLayout() {
   return (
     <>
       <StyledChatLayout>
-        <Header>logo</Header>
+        <Header>
+          <Logout />
+        </Header>
         <ConversationsList onSelectedConvo={handleSelectedConvo} />
         <ChatInterface selectedConvo={selectedConvo} />
       </StyledChatLayout>
