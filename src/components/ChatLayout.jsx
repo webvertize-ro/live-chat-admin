@@ -3,12 +3,13 @@ import ChatInterface from './ChatInterface';
 import styled from 'styled-components';
 import { useState } from 'react';
 import Logout from './authentication/Logout';
+import Logo from './Logo';
 
 const StyledChatLayout = styled.div`
   display: grid;
   height: 100vh;
 
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 100px 1fr;
 
   grid-template-columns: 2.5fr 6fr;
 
@@ -35,6 +36,7 @@ function ChatLayout() {
     <>
       <StyledChatLayout>
         <Header>
+          <Logo />
           <Logout />
         </Header>
         <ConversationsList onSelectedConvo={handleSelectedConvo} />

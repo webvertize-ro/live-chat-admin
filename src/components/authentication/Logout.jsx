@@ -16,7 +16,7 @@ function Logout() {
       onClick={logout}
       className="btn btn-danger"
     >
-      {!isLoading ? 'Log out' : <LoadingComponent />}
+      {!isLoading ? 'Deconectare' : <LoadingComponent />}
     </StyledButton>
   );
 }
