@@ -245,7 +245,7 @@ function ChatInterface({ selectedConvo }) {
   if (!selectedConvo)
     return (
       <StyledChatInterface noConvo={!selectedConvo ? true : false}>
-        <p>Select a conversation from the left</p>
+        <p>Selecteză o conversație din stânga</p>
       </StyledChatInterface>
     );
 
