@@ -139,6 +139,7 @@ function ConversationsList({ onSelectedConvo }) {
             <ConversationName>
               <NameLastSeen>
                 <Name>
+                  <div>test</div>
                   <strong>Nume: </strong>
                   <div>{visitor.name}</div>
                 </Name>
