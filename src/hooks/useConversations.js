@@ -7,6 +7,21 @@ export default function useConversations() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    async function fetchConversations() {
+      const { data, error } = await supabase
+        .from('visitors')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        setError(error.message);
+      } else {
+        setConversations(data);
+      }
+
+      setLoading(false);
+    }
+
     fetchConversations();
 
     const channel = supabase
@@ -24,21 +39,6 @@ export default function useConversations() {
 
     return () => supabase.removeChannel(channel);
   }, []);
-
-  async function fetchConversations() {
-    const { data, error } = await supabase
-      .from('visitors')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      setError(error.message);
-    } else {
-      setConversations(data);
-    }
-
-    setLoading(false);
-  }
 
   return { conversations, loading, error };
 }
