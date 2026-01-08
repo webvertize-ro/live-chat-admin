@@ -115,7 +115,7 @@ function ConversationsList({ onSelectedConvo }) {
 
     calculateNotifications();
 
-    document.title = `${calculateNotifications()} test`;
+    document.title = `(${calculateNotifications()}) Chat Edion Trans`;
   }, [conversations]);
 
   if (loading) return <p>Loading conversations...</p>;
