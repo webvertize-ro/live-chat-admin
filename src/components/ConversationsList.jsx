@@ -12,7 +12,6 @@ const StyledConversationsList = styled.div`
   flex: 1.5;
   grid-area: sidebar;
   border-right: 1px solid #e0e0e0;
-  padding: 16px;
   position: relative;
 
   &::-webkit-scrollbar {
@@ -32,7 +31,7 @@ const StyledConversationsList = styled.div`
 const SearchBarTotal = styled.div`
   position: sticky;
   top: 0;
-  background-color: rgb(28, 160, 121);
+  background-color: rgb(177, 223, 55);
   color: #fff;
   z-index: 10;
 `;
