@@ -18,12 +18,12 @@ export default async function handler(req, res) {
       .from('visitors')
       .select('*')
       .eq('id', visitorId)
-      .order('created_at', { ascending: true });
+      .order('created_at', { ascending: false });
   } else {
     query = supabase
       .from('visitors')
       .select('*')
-      .order('created_at', { ascending: true });
+      .order('created_at', { ascending: false });
   }
 
   const { data, error } = await query;
