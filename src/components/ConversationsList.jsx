@@ -33,7 +33,7 @@ const SearchBarTotal = styled.div`
   position: fixed;
   background-color: rgb(28, 160, 121);
   color: #fff;
-  /* width: 300px; */
+  width: 100%;
 `;
 
 const StyledH4 = styled.h4`
@@ -156,7 +156,7 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <SearchBarTotal className="sticky-top">
+      <SearchBarTotal>
         <StyledH4>Conversații</StyledH4>
         <ConversationsSearchBar>
           <form className="d-flex">
