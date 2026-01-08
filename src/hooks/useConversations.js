@@ -35,12 +35,28 @@ export default function useConversations() {
       .on(
         'postgres_changes',
         {
-          event: 'INSERT',
+          event: '',
           table: 'visitors',
           schema: 'public',
         },
         (payload) => {
-          setConversations((prev) => [...prev, payload.new]);
+          setConversations((prev) => {
+            if (payload.eventType === 'INSERT') {
+              return [payload.new, ...prev];
+            }
+
+            if (payload.eventType === 'UPDATE') {
+              return prev.map((c) =>
+                c.id === payload.new.id ? payload.new : c
+              );
+            }
+
+            if (payload.eventType === 'DELETE') {
+              return prev.filter((c) => c.id !== payload.old.id);
+            }
+
+            return prev;
+          });
         }
       )
       .subscribe();
@@ -48,12 +64,11 @@ export default function useConversations() {
     return () => {
       supabase.removeChannel(channel);
     };
-  });
+  }, []);
 
   return {
     loading,
     conversations,
     error,
-    setConversations,
   };
 }

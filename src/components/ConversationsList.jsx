@@ -115,6 +115,16 @@ function ConversationsList({ onSelectedConvo }) {
     );
   });
 
+  async function handleConversationClick(visitor) {
+    onSelectedConvo(visitor);
+
+    await fetch('/api/acknowledgeConversation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: visitor.id }),
+    });
+  }
+
   return (
     <StyledConversationsList>
       <StyledH4>Conversații</StyledH4>
@@ -133,7 +143,7 @@ function ConversationsList({ onSelectedConvo }) {
       {filteredConversations.map((visitor, i) => (
         <Conversation
           key={visitor.id}
-          onClick={() => onSelectedConvo(visitor.id)}
+          onClick={() => handleConversationClick(visitor)}
         >
           <ConversationAvatar>
             <FontAwesomeIcon icon={faUser} />
@@ -156,7 +166,11 @@ function ConversationsList({ onSelectedConvo }) {
               <div>{'ultimul mesaj din conversatie'}</div>
             </ConversationLastMessage>
           </ConversationInfo>
-          <ConversationNotification>3</ConversationNotification>
+          {visitor.unread_count > 0 && (
+            <ConversationNotification>
+              {visitor.unread_count}
+            </ConversationNotification>
+          )}
         </Conversation>
       ))}
       {filteredConversations.length === 0 && <p>Nicio conversație găsită.</p>}
