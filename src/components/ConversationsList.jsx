@@ -13,6 +13,7 @@ const StyledConversationsList = styled.div`
   grid-area: sidebar;
   border-right: 1px solid #e0e0e0;
   padding: 16px;
+  position: relative;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -26,6 +27,10 @@ const StyledConversationsList = styled.div`
     background-color: #1ca079;
     outline: 1px solid slategrey;
   }
+`;
+
+const SearchBarTotal = styled.div`
+  position: fixed;
 `;
 
 const StyledH4 = styled.h4`
@@ -148,19 +153,22 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <StyledH4>Conversații</StyledH4>
-      <ConversationsSearchBar>
-        <form className="d-flex">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Caută..."
-            aria-label="Search"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          ></input>
-        </form>
-      </ConversationsSearchBar>
+      <SearchBarTotal>
+        <StyledH4>Conversații</StyledH4>
+        <ConversationsSearchBar>
+          <form className="d-flex">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Caută..."
+              aria-label="Search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            ></input>
+          </form>
+        </ConversationsSearchBar>
+      </SearchBarTotal>
+
       {filteredConversations.map((visitor, i) => (
         <Conversation
           key={visitor.id}
