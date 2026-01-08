@@ -160,9 +160,9 @@ function ChatInterface({ selectedConvo }) {
 
   // scroll when a new message arrives
   useEffect(() => {
-    if (messages.length === 0) return;
+    if (messages?.length === 0) return;
     scrollToBottom();
-  }, [messages.length]);
+  }, [messages?.length]);
 
   // subscribing to real-time changes
   useEffect(() => {
