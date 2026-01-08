@@ -103,6 +103,21 @@ function ConversationsList({ onSelectedConvo }) {
   const { loading, conversations, error } = useConversations();
   const [searchInput, setSearchInput] = useState('');
 
+  useEffect(() => {
+    function calculateNotifications() {
+      let totalNotifications = 0;
+      conversations.forEach((conv) => {
+        totalNotifications += conv.unread_count;
+      });
+
+      return totalNotifications;
+    }
+
+    calculateNotifications();
+
+    document.title = `${calculateNotifications()} test`;
+  }, [conversations]);
+
   if (loading) return <p>Loading conversations...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -124,6 +139,8 @@ function ConversationsList({ onSelectedConvo }) {
       body: JSON.stringify({ visitor_id: visitor.id }),
     });
   }
+
+  // Notifications in the page title
 
   return (
     <StyledConversationsList>
