@@ -156,7 +156,7 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <SearchBarTotal>
+      <SearchBarTotal className="sticky-top">
         <StyledH4>Conversații</StyledH4>
         <ConversationsSearchBar>
           <form className="d-flex">
