@@ -117,7 +117,7 @@ function ConversationsList({ onSelectedConvo }) {
 
   return (
     <StyledConversationsList>
-      <StyledH4>Conversații test</StyledH4>
+      <StyledH4>Conversații</StyledH4>
       <ConversationsSearchBar>
         <form className="d-flex">
           <input
@@ -139,7 +139,6 @@ function ConversationsList({ onSelectedConvo }) {
             <ConversationName>
               <NameLastSeen>
                 <Name>
-                  <div>test</div>
                   <strong>Nume: </strong>
                   <div>{visitor.name}</div>
                 </Name>
