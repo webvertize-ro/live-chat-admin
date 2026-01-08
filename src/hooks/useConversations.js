@@ -30,9 +30,25 @@ export default function useConversations() {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'visitors' },
         (payload) => {
-          setConversations((prev) =>
-            prev.map((c) => (c.id === payload.new.id ? payload.new : c))
-          );
+          setConversations((prev) => {
+            if (payload.eventType === 'INSERT') {
+              // new conversation
+              return [payload.new, ...prev];
+            }
+
+            if (payload.eventType === 'UPDATE') {
+              // unread_count changes, admin_seen reset
+              return prev.map((c) =>
+                c.id === payload.new.id ? payload.ne : c
+              );
+            }
+
+            if (payload.eventType === 'DELETE') {
+              return prev.filter((c) => c.id !== payload.old.id);
+            }
+
+            return prev;
+          });
         }
       )
       .subscribe();
