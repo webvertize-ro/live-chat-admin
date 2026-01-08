@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../db/db';
 
 export default function useConversations() {
+  const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [conversations, setConversations] = useState(null);
   const [error, setError] = useState(null);
 
+  // initial fetch via API
   useEffect(() => {
     async function fetchConversations() {
       try {
-        setLoading(true);
-        const response = await fetch('/api/getVisitors');
-        const data = await response.json();
+        const res = await fetch('/api/getVisitors');
+        const data = await res.json();
 
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch conversations');
+        if (!res.ok) {
+          throw new Error(data.error || 'Failed to fetch visitors');
         }
 
         setConversations(data.visitors || []);
@@ -28,16 +28,15 @@ export default function useConversations() {
     fetchConversations();
   }, []);
 
-  // implementing real-time
   useEffect(() => {
     const channel = supabase
-      .channel('get-visitors')
+      .channel('visitors-realtime')
       .on(
         'postgres_changes',
         {
-          event: '',
-          table: 'visitors',
+          event: '*',
           schema: 'public',
+          table: 'visitors',
         },
         (payload) => {
           setConversations((prev) => {
@@ -66,9 +65,5 @@ export default function useConversations() {
     };
   }, []);
 
-  return {
-    loading,
-    conversations,
-    error,
-  };
+  return { conversations, loading, error };
 }
