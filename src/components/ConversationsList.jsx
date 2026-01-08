@@ -176,7 +176,6 @@ function ConversationsList({ onSelectedConvo }) {
                   <strong>Nume: </strong>
                   <div>{visitor.name}</div>
                 </Name>
-                {/* <LastSeen>acum 2 min</LastSeen> */}
               </NameLastSeen>
             </ConversationName>
             <ConversationPhoneNumber>
