@@ -1,4 +1,4 @@
-import { supabase } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
 export default async function acknowledgeConversation(req, res) {
   if (req.method !== 'POST') {
