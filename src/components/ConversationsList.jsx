@@ -115,7 +115,11 @@ function ConversationsList({ onSelectedConvo }) {
 
     calculateNotifications();
 
-    document.title = `(${calculateNotifications()}) Chat Edion Trans`;
+    document.title = `${
+      calculateNotifications() > 0
+        ? `(${calculateNotifications()}) Chat Edion Trans`
+        : `Chat Edion Trans`
+    }`;
   }, [conversations]);
 
   if (loading) return <p>Loading conversations...</p>;
@@ -172,16 +176,16 @@ function ConversationsList({ onSelectedConvo }) {
                   <strong>Nume: </strong>
                   <div>{visitor.name}</div>
                 </Name>
-                <LastSeen>acum 2 min</LastSeen>
+                {/* <LastSeen>acum 2 min</LastSeen> */}
               </NameLastSeen>
             </ConversationName>
             <ConversationPhoneNumber>
               <strong>Phone Number:</strong>
               <div>{visitor.phone_number}</div>
             </ConversationPhoneNumber>
-            <ConversationLastMessage>
+            {/* <ConversationLastMessage>
               <div>{'ultimul mesaj din conversatie'}</div>
-            </ConversationLastMessage>
+            </ConversationLastMessage> */}
           </ConversationInfo>
           {visitor.unread_count > 0 && (
             <ConversationNotification>
