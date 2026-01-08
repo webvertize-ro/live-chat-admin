@@ -7,7 +7,8 @@ export default function useConversations() {
   const [error, setError] = useState(null);
 
   const audioRef = useRef(null);
-  const isFirstRealTimeEvent = useRef(true);
+  const unreadMapRef = useRef(new Map());
+  const initializedRef = useRef(false);
 
   // initialize audio
   useEffect(() => {
@@ -26,6 +27,13 @@ export default function useConversations() {
         }
 
         setConversations(data.visitors || []);
+
+        // initialize unread map
+        data.visitors?.forEach((v) => {
+          unreadMapRef.current.set(v.id, v.unread_count ?? 0);
+        });
+
+        initializedRef.current = true;
       } catch (error) {
         setError(error.message);
       } finally {
@@ -48,20 +56,24 @@ export default function useConversations() {
         },
         (payload) => {
           setConversations((prev) => {
-            if (!isFirstRealTimeEvent.current) {
-              audioRef.current?.play().catch(() => {});
-            } else {
-              isFirstRealTimeEvent.current = false;
-            }
-
             if (payload.eventType === 'INSERT') {
               return [payload.new, ...prev];
             }
 
             if (payload.eventType === 'UPDATE') {
-              return prev.map((c) =>
-                c.id === payload.new.id ? payload.new : c
-              );
+              const updated = payload.new;
+
+              const prevUnread = unreadMapRef.current.get(updated.id) ?? 0;
+              const newUnread = updated.unread_count ?? 0;
+
+              // play sound only if unread_count increased
+              if (initializedRef.current && newUnread > prevUnread) {
+                audioRef.current?.play().catch(() => {});
+              }
+
+              unreadMapRef.current.set(updated.id, newUnread);
+
+              return prev.map((c) => (c.id === updated.id ? updated : c));
             }
 
             if (payload.eventType === 'DELETE') {
