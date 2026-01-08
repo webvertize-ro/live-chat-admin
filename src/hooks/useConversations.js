@@ -2,59 +2,58 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../db/db';
 
 export default function useConversations() {
-  const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [conversations, setConversations] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchConversations() {
-      const { data, error } = await supabase
-        .from('visitors')
-        .select('*')
-        .order('created_at', { ascending: false });
+      try {
+        setLoading(true);
+        const response = await fetch('/api/getVisitors');
+        const data = await response.json();
 
-      if (error) {
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to fetch conversations');
+        }
+
+        setConversations(data.visitors || []);
+      } catch (error) {
         setError(error.message);
-      } else {
-        setConversations(data);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     }
 
     fetchConversations();
+  }, []);
 
+  // implementing real-time
+  useEffect(() => {
     const channel = supabase
-      .channel('visitors-realtime')
+      .channel('get-visitors')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'visitors' },
+        {
+          event: 'INSERT',
+          table: 'visitors',
+          schema: 'public',
+        },
         (payload) => {
-          setConversations((prev) => {
-            if (payload.eventType === 'INSERT') {
-              // new conversation
-              return [payload.new, ...prev];
-            }
-
-            if (payload.eventType === 'UPDATE') {
-              // unread_count changes, admin_seen reset
-              return prev.map((c) =>
-                c.id === payload.new.id ? payload.new : c
-              );
-            }
-
-            if (payload.eventType === 'DELETE') {
-              return prev.filter((c) => c.id !== payload.old.id);
-            }
-
-            return prev;
-          });
+          setConversations((prev) => [...prev, payload.new]);
         }
       )
       .subscribe();
 
-    return () => supabase.removeChannel(channel);
-  }, []);
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  });
 
-  return { conversations, loading, error };
+  return {
+    loading,
+    conversations,
+    error,
+    setConversations,
+  };
 }
