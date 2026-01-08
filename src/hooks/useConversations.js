@@ -2,58 +2,43 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../db/db';
 
 export default function useConversations() {
+  const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [conversations, setConversations] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchConversations() {
-      try {
-        setLoading(true);
-        const response = await fetch('/api/getVisitors');
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch conversations');
-        }
-
-        setConversations(data.visitors || []);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
     fetchConversations();
-  }, []);
 
-  // implementing real-time
-  useEffect(() => {
     const channel = supabase
-      .channel('get-visitors')
+      .channel('visitors-realtime')
       .on(
         'postgres_changes',
-        {
-          event: 'INSERT',
-          table: 'visitors',
-          schema: 'public',
-        },
+        { event: '*', schema: 'public', table: 'visitors' },
         (payload) => {
-          setConversations((prev) => [...prev, payload.new]);
+          setConversations((prev) =>
+            prev.map((c) => (c.id === payload.new.id ? payload.new : c))
+          );
         }
       )
       .subscribe();
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  });
+    return () => supabase.removeChannel(channel);
+  }, []);
 
-  return {
-    loading,
-    conversations,
-    error,
-    setConversations,
-  };
+  async function fetchConversations() {
+    const { data, error } = await supabase
+      .from('visitors')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setConversations(data);
+    }
+
+    setLoading(false);
+  }
+
+  return { conversations, loading, error };
 }
