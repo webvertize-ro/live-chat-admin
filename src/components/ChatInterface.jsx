@@ -12,6 +12,7 @@ const StyledChatInterface = styled.div`
   align-items: ${(props) => (props.noConvo ? 'center' : '')};
   justify-content: ${(props) => (props.noConvo ? 'center' : '')};
   grid-area: main;
+  overflow-y: scroll;
 `;
 
 const Header = styled.div`
