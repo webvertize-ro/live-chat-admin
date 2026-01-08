@@ -31,7 +31,7 @@ const StyledConversationsList = styled.div`
 const SearchBarTotal = styled.div`
   position: sticky;
   top: 0;
-  background-color: rgb(177, 223, 55);
+  background-color: rgb(26, 109, 65);
   color: #fff;
   z-index: 10;
 `;
