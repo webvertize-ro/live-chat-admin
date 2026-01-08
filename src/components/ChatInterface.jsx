@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
 import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
+import { formatDate } from '../utils/formatDate';
 
 const StyledChatInterface = styled.div`
   display: flex;
@@ -295,7 +296,7 @@ function ChatInterface({ selectedConvo }) {
                 ) : null}
                 {/* text messages */}
                 {msg.message && <Message>{msg.message}</Message>}
-                <MessageDate>{msg.created_at}</MessageDate>
+                <MessageDate>{formatDate(msg.created_at)}</MessageDate>
               </MessageContent>
             </MessageBubble>
           ))
