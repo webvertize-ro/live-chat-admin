@@ -39,7 +39,7 @@ export default function useConversations() {
             if (payload.eventType === 'UPDATE') {
               // unread_count changes, admin_seen reset
               return prev.map((c) =>
-                c.id === payload.new.id ? payload.ne : c
+                c.id === payload.new.id ? payload.new : c
               );
             }
 
