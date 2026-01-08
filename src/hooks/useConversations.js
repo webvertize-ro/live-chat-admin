@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { supabase } from '../db/db';
 
 export default function useConversations() {
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const audioRef = useRef(null);
+  const unreadMapRef = useRef(new Map());
+  const initializedRef = useRef(false);
+
+  useEffect(() => {
+    audioRef.current = new Audio('/notification.mp3');
+  }, []);
 
   // initial fetch via API
   useEffect(() => {
@@ -18,6 +26,13 @@ export default function useConversations() {
         }
 
         setConversations(data.visitors || []);
+
+        // initialize unread map
+        data.visitors?.forEach((v) => {
+          unreadMapRef.current.set(v.id, v.unread_count ?? 0);
+        });
+
+        initializedRef.current = true;
       } catch (error) {
         setError(error.message);
       } finally {
@@ -45,9 +60,20 @@ export default function useConversations() {
             }
 
             if (payload.eventType === 'UPDATE') {
-              return prev.map((c) =>
-                c.id === payload.new.id ? payload.new : c
-              );
+              const updated = payload.new;
+
+              const prevUnread = unreadMapRef.current.get(updated.id) ?? 0;
+              const newUnread = updated.unread_count ?? 0;
+
+              // play sound ONLY is unread_count increased
+
+              if (initializedRef.current && newUnread > prevUnread) {
+                audioRef.current?.play().catch(() => {});
+              }
+
+              unreadMapRef.current.set(updated.id, newUnread);
+
+              return prev.map((c) => (c.id === updated.id ? updated : c));
             }
 
             if (payload.eventType === 'DELETE') {

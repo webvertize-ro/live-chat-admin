@@ -182,9 +182,6 @@ function ConversationsList({ onSelectedConvo }) {
               <strong>Phone Number:</strong>
               <div>{visitor.phone_number}</div>
             </ConversationPhoneNumber>
-            {/* <ConversationLastMessage>
-              <div>{'ultimul mesaj din conversatie'}</div>
-            </ConversationLastMessage> */}
           </ConversationInfo>
           {visitor.unread_count > 0 && (
             <ConversationNotification>
