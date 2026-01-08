@@ -33,7 +33,6 @@ const SearchBarTotal = styled.div`
   position: fixed;
   background-color: rgb(28, 160, 121);
   color: #fff;
-  width: 100%;
 `;
 
 const StyledH4 = styled.h4`
