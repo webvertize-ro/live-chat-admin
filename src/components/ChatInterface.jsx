@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -129,6 +129,11 @@ function ChatInterface({ selectedConvo }) {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [loadingSendMessage, setLoadingSendMessage] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = (behavior = 'smooth') => {
+    messagesEndRef.current?.scrollIntoView({ behavior });
+  };
 
   useEffect(() => {
     if (!selectedConvo) return;
@@ -141,14 +146,23 @@ function ChatInterface({ selectedConvo }) {
         );
         const data = await res.json();
         setMessages(data.messages);
+        setLoadingMessages(false);
+
+        // Scroll to the bottom after initial load
+        setTimeout(() => scrollToBottom('smooth'), 400);
       } catch (error) {
         console.error(error);
       }
-      setLoadingMessages(false);
     }
 
     fetchMessages();
   }, [selectedConvo]);
+
+  // scroll when a new message arrives
+  useEffect(() => {
+    if (messages.length === 0) return;
+    scrollToBottom();
+  }, [messages.length]);
 
   // subscribing to real-time changes
   useEffect(() => {
@@ -286,6 +300,7 @@ function ChatInterface({ selectedConvo }) {
             </MessageBubble>
           ))
         )}
+        <div ref={messagesEndRef}></div>
       </Messages>
 
       {/* File Preview */}
