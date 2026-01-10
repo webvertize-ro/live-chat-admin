@@ -6,7 +6,7 @@ import { supabase } from '../db/db';
 import { faXmark, faPaperclip, faL } from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
-import Lightbox from 'yet-another-react-lightbox';
+import Lightbox, { LightboxRoot } from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
 const StyledChatInterface = styled.div`
@@ -144,7 +144,19 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
   const [loadingSendMessage, setLoadingSendMessage] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Building the slides array from messages
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Build the slides array from messages
+  const imageMessages =
+    messages?.filter(
+      (msg) => msg.file_url && msg.file_mime.startsWith('image/')
+    ) || [];
+
+  const slides = imageMessages?.map((msg) => ({
+    src: msg.file_url,
+    alt: msg.file_name || 'Image',
+  }));
 
   const scrollToBottom = (behavior = 'smooth') => {
     messagesEndRef.current?.scrollIntoView({ behavior });
@@ -301,7 +313,18 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
               <MessageContent>
                 {/* messages with files and with images */}
                 {msg.file_url && msg.file_mime?.startsWith('image/') ? (
-                  <ChatImg src={msg.file_url} alt={msg.file_name} width="100" />
+                  <ChatImg
+                    src={msg.file_url}
+                    alt={msg.file_name}
+                    width="100"
+                    onClick={() => {
+                      const index = imageMessages.findIndex(
+                        (img) => img.file_url === msg.file_url
+                      );
+                      setLightboxIndex(index);
+                      setIsLightboxOpen(true);
+                    }}
+                  />
                 ) : msg.file_url ? (
                   <a href={msg.file_url} target="_blank" rel="noreferref">
                     {msg.file_name}
@@ -365,6 +388,13 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
           </SendingButton>
         </StyledForm>
       </Bottom>
+
+      <Lightbox
+        open={isLightboxOpen}
+        close={() => setIsLightboxOpen(false)}
+        slides={slides}
+        index={lightboxIndex}
+      />
     </StyledChatInterface>
   );
 }
