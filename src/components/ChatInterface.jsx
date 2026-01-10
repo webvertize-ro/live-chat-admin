@@ -144,7 +144,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
     (msg) => msg.file_url && msg.file_mime?.startsWith('image/')
   );
 
-  const slides = imageMessages.map((msg) => ({
+  const slides = imageMessages?.map((msg) => ({
     src: msg.file_url,
     alt: msg.file_name || 'Image',
   }));
