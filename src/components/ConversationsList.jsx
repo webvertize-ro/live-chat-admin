@@ -142,14 +142,17 @@ function ConversationsList({ onSelectedConvo }) {
     );
   });
 
-  async function handleConversationClick(visitor) {
-    onSelectedConvo(visitor);
-
+  async function acknowledgeConvo(visitor) {
     await fetch('/api/acknowledgeConversation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ visitor_id: visitor.id }),
     });
+  }
+
+  function handleConversationClick(visitor) {
+    onSelectedConvo(visitor);
+    acknowledgeConvo(visitor);
   }
 
   // Notifications in the page title
