@@ -285,8 +285,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
         ) : (
           messages?.map((msg, i) => (
             <MessageBubble key={i} senderType={msg.sender_type}>
-              {console.log('message is: ', msg)}
-              <strong>{msg.user_name}:</strong>
+              <strong>{msg.user_name}</strong>
               <MessageContent>
                 {/* messages with files and with images */}
                 {msg.file_url && msg.file_mime?.startsWith('image/') ? (
