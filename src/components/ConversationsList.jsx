@@ -107,7 +107,7 @@ const ConversationPhoneNumber = styled.div`
 
 const ConversationLastMessage = styled.div``;
 
-function ConversationsList({ onSelectedConvo, acknowledgeConvo }) {
+function ConversationsList({ onSelectedConvo, onAcknowledgeConvo }) {
   const { loading, conversations, error } = useConversations();
   const [searchInput, setSearchInput] = useState('');
 
@@ -144,7 +144,7 @@ function ConversationsList({ onSelectedConvo, acknowledgeConvo }) {
 
   function handleConversationClick(visitor) {
     onSelectedConvo(visitor);
-    acknowledgeConvo(visitor);
+    onAcknowledgeConvo(visitor);
   }
 
   // Notifications in the page title

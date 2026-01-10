@@ -48,9 +48,12 @@ function ChatLayout() {
         </Header>
         <ConversationsList
           onSelectedConvo={handleSelectedConvo}
-          acknowledgeConvo={acknowledgeConvo}
+          onAcknowledgeConvo={acknowledgeConvo}
         />
-        <ChatInterface selectedConvo={selectedConvo} />
+        <ChatInterface
+          selectedConvo={selectedConvo}
+          onAcknowledgeConvo={acknowledgeConvo}
+        />
       </StyledChatLayout>
     </>
   );

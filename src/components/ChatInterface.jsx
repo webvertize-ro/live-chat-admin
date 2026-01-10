@@ -123,7 +123,7 @@ const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-function ChatInterface({ selectedConvo }) {
+function ChatInterface({ selectedConvo, onAcknowledgeConvo }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
   const [attachment, setAttachment] = useState(null);
@@ -336,6 +336,7 @@ function ChatInterface({ selectedConvo }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
+            onClick={() => onAcknowledgeConvo()}
           />
           <FileUploadInput
             id="file-upload"
