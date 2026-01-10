@@ -50,6 +50,7 @@ const Conversation = styled.div`
   align-items: center;
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
+  background-color: ${(props) => (props.isSelected ? 'green' : 'transparent')};
 
   &:hover {
     cursor: pointer;
@@ -108,7 +109,11 @@ const ConversationPhoneNumber = styled.div`
 
 const ConversationLastMessage = styled.div``;
 
-function ConversationsList({ onSelectedConvo, onAcknowledgeConvo }) {
+function ConversationsList({
+  onSelectedConvo,
+  onAcknowledgeConvo,
+  selectedConvo,
+}) {
   const { loading, conversations, error } = useConversations();
   const [searchInput, setSearchInput] = useState('');
 
@@ -143,6 +148,8 @@ function ConversationsList({ onSelectedConvo, onAcknowledgeConvo }) {
     );
   });
 
+  function slectConversation(visitor) {}
+
   function handleConversationClick(visitor) {
     onSelectedConvo(visitor);
     onAcknowledgeConvo(visitor);
@@ -171,6 +178,7 @@ function ConversationsList({ onSelectedConvo, onAcknowledgeConvo }) {
       {filteredConversations.map((visitor, i) => (
         <Conversation
           key={visitor.id}
+          isSelected={visitor.id === selectedConvo.id}
           onClick={() => handleConversationClick(visitor)}
         >
           <ConversationAvatar>

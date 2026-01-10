@@ -51,6 +51,7 @@ function ChatLayout() {
         <ConversationsList
           onSelectedConvo={handleSelectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
+          selectedConvo={selectedConvo}
         />
         <ChatInterface
           selectedConvo={selectedConvo}
