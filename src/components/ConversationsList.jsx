@@ -107,7 +107,7 @@ const ConversationPhoneNumber = styled.div`
 
 const ConversationLastMessage = styled.div``;
 
-function ConversationsList({ onSelectedConvo }) {
+function ConversationsList({ onSelectedConvo, acknowledgeConvo }) {
   const { loading, conversations, error } = useConversations();
   const [searchInput, setSearchInput] = useState('');
 
@@ -141,14 +141,6 @@ function ConversationsList({ onSelectedConvo }) {
       conversation.phone_number?.toLowerCase().includes(query)
     );
   });
-
-  async function acknowledgeConvo(visitor) {
-    await fetch('/api/acknowledgeConversation', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ visitor_id: visitor.id }),
-    });
-  }
 
   function handleConversationClick(visitor) {
     onSelectedConvo(visitor);
