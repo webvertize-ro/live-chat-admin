@@ -6,8 +6,6 @@ import { supabase } from '../db/db';
 import { faXmark, faPaperclip, faL } from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
-import Lightbox from 'yet-another-react-lightbox';
-import 'yet-another-react-lightbox/styles.css';
 
 const StyledChatInterface = styled.div`
   display: flex;
@@ -61,6 +59,14 @@ const MessageBubble = styled.div`
 const MessageContent = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const ChatImg = styled.img`
+  border-radius: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Message = styled.div`
@@ -140,14 +146,6 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Building the slides array from messages
-  const imageMessages = messages?.filter(
-    (msg) => msg.file_url && msg.file_mime?.startsWith('image/')
-  );
-
-  const slides = imageMessages?.map((msg) => ({
-    src: msg.file_url,
-    alt: msg.file_name || 'Image',
-  }));
 
   const scrollToBottom = (behavior = 'smooth') => {
     messagesEndRef.current?.scrollIntoView({ behavior });
@@ -304,18 +302,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
               <MessageContent>
                 {/* messages with files and with images */}
                 {msg.file_url && msg.file_mime?.startsWith('image/') ? (
-                  <img
-                    src={msg.file_url}
-                    alt={msg.file_name}
-                    width="100"
-                    onClick={() => {
-                      const index = imageMessages.findIndex(
-                        (img) => img.file_url === msg.file_url
-                      );
-                      setLightboxIndex(index);
-                      setLightboxOpen(true);
-                    }}
-                  />
+                  <ChatImg src={msg.file_url} alt={msg.file_name} width="100" />
                 ) : msg.file_url ? (
                   <a href={msg.file_url} target="_blank" rel="noreferref">
                     {msg.file_name}
