@@ -47,7 +47,8 @@ const MessageBubble = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: lightgreen;
+  background-color: ${(props) =>
+    props.senderType === 'admin' ? '#1ca079' : '#fefc69'};
   border-radius: 1rem;
   padding: 0.5rem;
   align-self: ${(props) =>
