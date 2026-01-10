@@ -6,6 +6,8 @@ import { supabase } from '../db/db';
 import { faXmark, faPaperclip, faL } from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
 const StyledChatInterface = styled.div`
   display: flex;
@@ -141,9 +143,6 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [loadingSendMessage, setLoadingSendMessage] = useState(false);
   const messagesEndRef = useRef(null);
-
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Building the slides array from messages
 
