@@ -7,7 +7,6 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 const StyledConversationsList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   overflow-y: scroll;
   flex: 1.5;
   grid-area: sidebar;
@@ -55,6 +54,7 @@ const Conversation = styled.div`
   &:hover {
     cursor: pointer;
     background-color: rgb(26, 109, 65, 0.75);
+    color: #fff;
   }
 `;
 
