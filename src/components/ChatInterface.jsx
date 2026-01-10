@@ -53,6 +53,7 @@ const MessageBubble = styled.div`
   padding: 0.5rem;
   align-self: ${(props) =>
     props.senderType === 'user' ? 'flex-start' : 'flex-end'};
+  max-width: 500px;
 `;
 
 const MessageContent = styled.div`
