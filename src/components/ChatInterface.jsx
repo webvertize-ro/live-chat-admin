@@ -366,14 +366,6 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
           </SendingButton>
         </StyledForm>
       </Bottom>
-
-      {/* Lightbox */}
-      <Lightbox
-        open={lightboxOpen}
-        close={() => setLightboxOpen(false)}
-        slides={slides}
-        index={lightboxIndex}
-      />
     </StyledChatInterface>
   );
 }
