@@ -31,6 +31,8 @@ function ChatLayout() {
     setSelectedConvo(visitorId);
   }
 
+  console.log('selectedConvo is: ', selectedConvo);
+
   async function acknowledgeConvo(visitor) {
     await fetch('/api/acknowledgeConversation', {
       method: 'POST',
@@ -53,6 +55,7 @@ function ChatLayout() {
         <ChatInterface
           selectedConvo={selectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
+          visitor={selectedConvo}
         />
       </StyledChatLayout>
     </>
