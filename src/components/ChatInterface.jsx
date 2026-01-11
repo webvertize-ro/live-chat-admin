@@ -72,6 +72,10 @@ const ChatImg = styled.img`
   }
 `;
 
+const StyledLink = styled.a`
+  color: #fff;
+`;
+
 const Message = styled.div`
   font-size: 1.2rem;
 `;
@@ -327,9 +331,13 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                     }}
                   />
                 ) : msg.file_url ? (
-                  <a href={msg.file_url} target="_blank" rel="noreferref">
+                  <StyledLink
+                    href={msg.file_url}
+                    target="_blank"
+                    rel="noreferref"
+                  >
                     {msg.file_name}
-                  </a>
+                  </StyledLink>
                 ) : null}
                 {/* text messages */}
                 {msg.message && <Message>{msg.message}</Message>}
