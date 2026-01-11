@@ -148,8 +148,6 @@ function ConversationsList({
     );
   });
 
-  function slectConversation(visitor) {}
-
   function handleConversationClick(visitor) {
     onSelectedConvo(visitor);
     onAcknowledgeConvo(visitor);
@@ -178,7 +176,7 @@ function ConversationsList({
       {filteredConversations.map((visitor, i) => (
         <Conversation
           key={visitor.id}
-          isSelected={visitor.id === selectedConvo.id}
+          isSelected={visitor?.id === selectedConvo?.id}
           onClick={() => handleConversationClick(visitor)}
         >
           <ConversationAvatar>
