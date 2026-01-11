@@ -50,7 +50,8 @@ const Conversation = styled.div`
   align-items: center;
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
-  background-color: ${(props) => (props.isSelected ? 'green' : 'transparent')};
+  background-color: ${(props) =>
+    props.isSelected ? 'rgba(26, 109, 65, 0.75)' : '#fff'};
 
   &:hover {
     cursor: pointer;
