@@ -50,12 +50,8 @@ function LoginForm() {
         />
       </div>
       <div className="mb-4">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="btn btn-success w-100"
-        >
-          {isLoading ? <LoadingComponent color="danger" /> : 'Autentificare'}
+        <button type="submit" className="btn btn-success w-100">
+          {isLoading ? <LoadingComponent /> : 'Autentificare'}
         </button>
       </div>
     </form>
