@@ -53,6 +53,7 @@ const Conversation = styled.div`
   background-color: ${(props) =>
     props.isSelected ? 'rgba(26, 109, 65, 0.75)' : '#fff'};
   color: ${(props) => (props.isSelected ? '#fff' : '#000')};
+  transition: all 0.3s ease;
 
   &:hover {
     cursor: pointer;
