@@ -175,7 +175,7 @@ function ConversationsList({
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Caută..."
+              placeholder="Caută după nume sau număr de telefon..."
               aria-label="Search"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
