@@ -8,6 +8,7 @@ import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
 import Lightbox, { LightboxRoot } from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import edionTransLogo from '../assets/ediontrans_logo.svg';
 
 const StyledChatInterface = styled.div`
   display: flex;
@@ -57,6 +58,10 @@ const MessageBubble = styled.div`
     props.senderType === 'user' ? 'flex-start' : 'flex-end'};
   max-width: 500px;
   color: ${(props) => (props.senderType === 'admin' ? '#fff' : '#000')};
+`;
+
+const StyledImg = styled.img`
+  max-width: 50px;
 `;
 
 const MessageContent = styled.div`
@@ -314,6 +319,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
         ) : (
           messages?.map((msg, i) => (
             <MessageBubble key={i} senderType={msg.sender_type}>
+              <StyledImg src={edionTransLogo} alt="Edion Trans Logo" />
               <strong>{msg.user_name}</strong>
               <MessageContent>
                 {/* messages with files and with images */}
