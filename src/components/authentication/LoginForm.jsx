@@ -56,7 +56,7 @@ function LoginForm() {
           className="btn btn-success w-100"
         >
           {console.log('isLoading: ', isLoading)}
-          {!isLoading ? 'Autentificare' : '...'}
+          {isLoading ? 'Autentificare...' : 'Autentificare'}
         </button>
       </div>
     </form>
