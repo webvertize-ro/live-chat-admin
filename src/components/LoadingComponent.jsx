@@ -1,8 +1,8 @@
-function LoadingComponent({ size }) {
+function LoadingComponent({ size, color }) {
   return (
     <div
-      className={`spinner-border text-success ${
-        size ? `spinner-border-${size}` : ''
+      className={`spinner-border  ${size ? `spinner-border-${size}` : ''} ${
+        color ? `text-${color}` : 'success'
       }`}
       role="status"
     >
