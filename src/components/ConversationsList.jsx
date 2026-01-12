@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useConversations from '../hooks/useConversations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import LoadingComponent from './LoadingComponent';
 
 const StyledConversationsList = styled.div`
   display: flex;
@@ -139,7 +140,7 @@ function ConversationsList({
     }`;
   }, [conversations]);
 
-  if (loading) return <p>Loading conversations...</p>;
+  if (loading) return <LoadingComponent />;
   if (error) return <p>Error: {error}</p>;
 
   const filteredConversations = conversations.filter((conversation) => {
