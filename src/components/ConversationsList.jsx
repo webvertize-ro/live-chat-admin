@@ -8,6 +8,8 @@ import LoadingComponent from './LoadingComponent';
 const StyledConversationsList = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: ${(props) => (props.loading ? 'center' : 'unset')};
+  align-items: ${(props) => (props.loading ? 'center' : 'unset')};
   overflow-y: scroll;
   flex: 1.5;
   grid-area: sidebar;
@@ -140,7 +142,12 @@ function ConversationsList({
     }`;
   }, [conversations]);
 
-  if (loading) return <LoadingComponent />;
+  if (loading)
+    return (
+      <StyledConversationsList loading={loading}>
+        <LoadingComponent />
+      </StyledConversationsList>
+    );
   if (error) return <p>Error: {error}</p>;
 
   const filteredConversations = conversations.filter((conversation) => {
