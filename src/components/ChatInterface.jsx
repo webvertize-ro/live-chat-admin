@@ -320,11 +320,15 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
           messages?.map((msg, i) => (
             <MessageBubble key={i} senderType={msg.sender_type}>
               <div className="d-flex justify-content-center align-items-center gap-1">
-                <StyledImg
-                  src={edionTransLogo}
-                  alt="Edion Trans Logo"
-                  width="25"
-                />
+                {msg.sender_type === 'admin' ? (
+                  <StyledImg
+                    src={edionTransLogo}
+                    alt="Edion Trans Logo"
+                    width="25"
+                  />
+                ) : (
+                  ''
+                )}
                 <strong>{msg.user_name}</strong>
               </div>
 
