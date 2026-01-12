@@ -327,7 +327,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                     width="25"
                   />
                 ) : (
-                  ''
+                  <FontAwesomeIcon icon={faUser} />
                 )}
                 <strong>{msg.user_name}</strong>
               </div>
