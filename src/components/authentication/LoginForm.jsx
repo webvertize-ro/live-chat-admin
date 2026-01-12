@@ -51,7 +51,7 @@ function LoginForm() {
       </div>
       <div className="mb-4">
         <button type="submit" className="btn btn-success w-100">
-          {isLoading ? <LoadingComponent /> : 'Autentificare'}
+          {isLoading ? <LoadingComponent size="sm" /> : 'Autentificare'}
         </button>
       </div>
     </form>
