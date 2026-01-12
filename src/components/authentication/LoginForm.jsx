@@ -55,7 +55,7 @@ function LoginForm() {
           disabled={isLoading}
           className="btn btn-success w-100"
         >
-          {isLoading ? <LoadingComponent /> : 'Autentificare'}
+          {isLoading ? <LoadingComponent color="danger" /> : 'Autentificare'}
         </button>
       </div>
     </form>
