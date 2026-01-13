@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
-import { faXmark, faPaperclip, faL } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
 import Lightbox, { LightboxRoot } from 'yet-another-react-lightbox';
