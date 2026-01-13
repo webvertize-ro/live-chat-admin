@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Logout from './authentication/Logout';
 import Logo from './Logo';
+import { useAdminSettings } from '../hooks/useAdminSettings';
 
 const StyledChatLayout = styled.div`
   display: grid;
@@ -24,6 +25,8 @@ const Header = styled.div`
 `;
 
 function ChatLayout() {
+  const { settings, loading } = useAdminSettings();
+
   const [selectedConvo, setSelectedConvo] = useState(null);
 
   function handleSelectedConvo(visitorId) {
@@ -41,6 +44,8 @@ function ChatLayout() {
     });
   }
 
+  if (loading) return null;
+
   return (
     <>
       <StyledChatLayout>
@@ -49,6 +54,7 @@ function ChatLayout() {
           <Logout />
         </Header>
         <ConversationsList
+          soundEnabled={settings.notification_sound_enabled}
           onSelectedConvo={handleSelectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
           selectedConvo={selectedConvo}

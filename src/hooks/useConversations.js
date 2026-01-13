@@ -1,7 +1,7 @@
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../db/db';
 
-export default function useConversations() {
+export default function useConversations({ soundEnabled = true }) {
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -67,7 +67,11 @@ export default function useConversations() {
               const newUnread = updated.unread_count ?? 0;
 
               // play sound only if unread_count increased
-              if (initializedRef.current && newUnread > prevUnread) {
+              if (
+                initializedRef.current &&
+                soundEnabled &&
+                newUnread > prevUnread
+              ) {
                 audioRef.current?.play().catch(() => {});
               }
 
@@ -89,7 +93,7 @@ export default function useConversations() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [soundEnabled]);
 
   return { conversations, loading, error };
 }
