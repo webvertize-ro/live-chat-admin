@@ -151,8 +151,6 @@ function ConversationsList({
     );
   if (error) return <p>Error: {error}</p>;
 
-  if (loadingNotification) return null;
-
   const filteredConversations = conversations.filter((conversation) => {
     const query = searchInput.toLowerCase();
 
