@@ -4,7 +4,6 @@ import useConversations from '../hooks/useConversations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import LoadingComponent from './LoadingComponent';
-import { useAdminSettings } from '../hooks/useAdminSettings';
 
 const StyledConversationsList = styled.div`
   display: flex;
@@ -124,8 +123,6 @@ function ConversationsList({
 }) {
   const { loading, conversations, error } = useConversations({ soundEnabled });
   const [searchInput, setSearchInput] = useState('');
-  const { settings, loadingNotification, toggleNotificationSound } =
-    useAdminSettings();
 
   useEffect(() => {
     function calculateNotifications() {
@@ -176,14 +173,6 @@ function ConversationsList({
     <StyledConversationsList>
       <SearchBarTotal>
         <StyledH4>Conversații</StyledH4>
-        <label style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <input
-            type="checkbox"
-            checked={settings.notification_sound_enabled}
-            onChange={(e) => toggleNotificationSound(e.target.checked)}
-          />
-          Notification sound
-        </label>
         <ConversationsSearchBar>
           <form className="d-flex">
             <input

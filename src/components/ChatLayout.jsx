@@ -25,7 +25,7 @@ const Header = styled.div`
 `;
 
 function ChatLayout() {
-  const { settings, loading } = useAdminSettings();
+  const { settings, loading, toggleNotificationSound } = useAdminSettings();
 
   const [selectedConvo, setSelectedConvo] = useState(null);
 
@@ -51,6 +51,14 @@ function ChatLayout() {
       <StyledChatLayout>
         <Header>
           <Logo />
+          <label style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <input
+              type="checkbox"
+              checked={settings.notification_sound_enabled}
+              onChange={(e) => toggleNotificationSound(e.target.checked)}
+            />
+            Notification sound
+          </label>
           <Logout />
         </Header>
         <ConversationsList
