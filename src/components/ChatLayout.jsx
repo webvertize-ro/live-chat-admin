@@ -32,7 +32,7 @@ const NotificationLabel = styled.label``;
 const NotificationButton = styled.button`
   border: none;
   background-color: transparent;
-  color: #402e7a;
+  color: #1ca079;
   font-size: 1.2rem;
 `;
 
