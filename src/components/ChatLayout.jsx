@@ -29,6 +29,13 @@ const Header = styled.div`
 
 const NotificationLabel = styled.label``;
 
+const NotificationButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #402e7a;
+  font-size: 1.2rem;
+`;
+
 function ChatLayout() {
   const { settings, loading, toggleNotificationSound } = useAdminSettings();
 
@@ -59,13 +66,15 @@ function ChatLayout() {
         <Header>
           <Logo />
           <NotificationLabel>
-            <button onClick={() => toggleNotificationSound(!enabled)}>
+            <NotificationButton
+              onClick={() => toggleNotificationSound(!enabled)}
+            >
               {enabled ? (
                 <FontAwesomeIcon icon={faVolumeHigh} />
               ) : (
                 <FontAwesomeIcon icon={faVolumeXmark} />
               )}
-            </button>
+            </NotificationButton>
           </NotificationLabel>
           <Logout />
         </Header>
