@@ -128,7 +128,7 @@ function ConversationsList({
     function calculateNotifications() {
       let totalNotifications = 0;
       conversations.forEach((conv) => {
-        totalNotifications += conv.unread_count;
+        totalNotifications += conv.unread_count_admin;
       });
 
       return totalNotifications;
