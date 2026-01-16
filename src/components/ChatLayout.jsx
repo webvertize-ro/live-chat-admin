@@ -65,18 +65,20 @@ function ChatLayout() {
       <StyledChatLayout>
         <Header>
           <Logo />
-          <NotificationLabel>
-            <NotificationButton
-              onClick={() => toggleNotificationSound(!enabled)}
-            >
-              {enabled ? (
-                <FontAwesomeIcon icon={faVolumeHigh} />
-              ) : (
-                <FontAwesomeIcon icon={faVolumeXmark} />
-              )}
-            </NotificationButton>
-          </NotificationLabel>
-          <Logout />
+          <div className="d-flex align-items-center justify-content-center">
+            <NotificationLabel>
+              <NotificationButton
+                onClick={() => toggleNotificationSound(!enabled)}
+              >
+                {enabled ? (
+                  <FontAwesomeIcon icon={faVolumeHigh} />
+                ) : (
+                  <FontAwesomeIcon icon={faVolumeXmark} />
+                )}
+              </NotificationButton>
+            </NotificationLabel>
+            <Logout />
+          </div>
         </Header>
         <ConversationsList
           soundEnabled={settings.notification_sound_enabled}
