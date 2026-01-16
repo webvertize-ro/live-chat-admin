@@ -65,7 +65,7 @@ function ChatLayout() {
       <StyledChatLayout>
         <Header>
           <Logo />
-          <div className="d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center gap-2">
             <NotificationLabel>
               <NotificationButton
                 onClick={() => toggleNotificationSound(!enabled)}
