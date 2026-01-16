@@ -63,7 +63,7 @@ function ChatLayout() {
               {enabled ? (
                 <FontAwesomeIcon icon={faVolumeHigh} />
               ) : (
-                <FontAwesomeIcon icon={faXmark} />
+                <FontAwesomeIcon icon={faVolumeXmark} />
               )}
             </button>
           </NotificationLabel>
