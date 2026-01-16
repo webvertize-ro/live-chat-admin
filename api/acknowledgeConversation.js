@@ -18,7 +18,7 @@ export default async function acknowledgeConversation(req, res) {
 
   const { error } = await supabase
     .from('visitors')
-    .update({ unread_count: 0 })
+    .update({ unread_count_admin: 0 })
     .eq('id', Number(visitor_id));
 
   if (error) {
