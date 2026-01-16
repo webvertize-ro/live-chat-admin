@@ -5,6 +5,9 @@ import { useState } from 'react';
 import Logout from './authentication/Logout';
 import Logo from './Logo';
 import { useAdminSettings } from '../hooks/useAdminSettings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeHigh, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatLayout = styled.div`
   display: grid;
@@ -48,18 +51,21 @@ function ChatLayout() {
 
   if (loading) return null;
 
+  const enabled = settings.notification_sound_enabled;
+
   return (
     <>
       <StyledChatLayout>
         <Header>
           <Logo />
           <NotificationLabel>
-            <input
-              type="checkbox"
-              checked={settings.notification_sound_enabled}
-              onChange={(e) => toggleNotificationSound(e.target.checked)}
-            />
-            {settings.notification_sound_enabled ? 'enabled' : 'not enabled'}
+            <button onClick={() => toggleNotificationSound(!enabled)}>
+              {enabled ? (
+                <FontAwesomeIcon icon={faVolumeHigh} />
+              ) : (
+                <FontAwesomeIcon icon={faXmark} />
+              )}
+            </button>
           </NotificationLabel>
           <Logout />
         </Header>
