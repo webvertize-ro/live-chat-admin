@@ -64,7 +64,7 @@ export default function useConversations({ soundEnabled = true }) {
               const updated = payload.new;
 
               const prevUnread = unreadMapRef.current.get(updated.id) ?? 0;
-              const newUnread = updated.unread_count ?? 0;
+              const newUnread = updated.unread_count_user ?? 0;
 
               // play sound only if unread_count increased
               if (
