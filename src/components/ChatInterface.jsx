@@ -62,6 +62,7 @@ const MessageBubble = styled.div`
     props.senderType === 'user' ? 'flex-start' : 'flex-end'};
   max-width: 500px;
   color: ${(props) => (props.senderType === 'admin' ? '#fff' : '#000')};
+  position: relative;
 
   &:hover .message-actions {
     opacity: 1;
