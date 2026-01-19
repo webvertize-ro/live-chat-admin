@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { faPaperPlane, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { supabase } from '../db/db';
-import { faXmark, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import {
+  faXmark,
+  faPaperclip,
+  faReply,
+} from '@fortawesome/free-solid-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { formatDate } from '../utils/formatDate';
 import Lightbox, { LightboxRoot } from 'yet-another-react-lightbox';
@@ -58,6 +62,24 @@ const MessageBubble = styled.div`
     props.senderType === 'user' ? 'flex-start' : 'flex-end'};
   max-width: 500px;
   color: ${(props) => (props.senderType === 'admin' ? '#fff' : '#000')};
+`;
+
+const StyledReplyButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(28, 160, 121);
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  top: -10px;
+  left: -10px;
+  position: absolute;
+  border: none;
+  font-size: 0.75rem;
+  padding: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 `;
 
 const StyledImg = styled.img`
@@ -388,6 +410,19 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   {msg.message && <Message>{msg.message}</Message>}
                   <MessageDate>{formatDate(msg.created_at)}</MessageDate>
                 </MessageContent>
+                <StyledReplyButton
+                  type="button"
+                  className="message-actions"
+                  onClick={() => {
+                    setReplyTo({
+                      id: msg.id,
+                      message: msg.message,
+                      sender_type: msg.sender_type,
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faReply} />
+                </StyledReplyButton>
               </MessageBubble>
             );
           })
