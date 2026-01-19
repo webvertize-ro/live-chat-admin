@@ -439,15 +439,18 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
       {/* reply-to preview above the input */}
       {replyTo && (
         <PreviewContainer>
-          <div>
-            Răspuns pentru
-            <strong>
-              {replyTo.sender_type === 'admin'
-                ? 'Edion Trans'
-                : 'Propriul mesaj'}
-            </strong>
+          <div className="d-flex flex-column">
+            <div className="d-flex align-items-center gap-2">
+              Răspuns pentru{' '}
+              <strong>
+                {replyTo.sender_type === 'admin'
+                  ? 'Edion Trans'
+                  : 'propriul mesaj'}
+              </strong>
+            </div>
+            <div>{replyTo.message}</div>
           </div>
-          <div>{replyTo.message}</div>
+
           <StyledButton type="button" onClick={() => setReplyTo(null)}>
             <FontAwesomeIcon icon={faXmark} />
           </StyledButton>
