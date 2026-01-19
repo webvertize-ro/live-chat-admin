@@ -448,7 +448,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   : 'propriul mesaj'}
               </strong>
             </div>
-            <div>{replyTo.message}</div>
+            <div>"{replyTo.message}"</div>
           </div>
 
           <StyledButton type="button" onClick={() => setReplyTo(null)}>
