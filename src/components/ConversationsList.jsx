@@ -76,13 +76,13 @@ const Conversation = styled.div`
     color: #fff;
   }
 
-  @media (max-width: 576px) {
+  /* @media (max-width: 576px) {
     &:hover {
       cursor: pointer;
       background-color: rgb(26, 109, 65);
       color: #fff;
     }
-  }
+  } */
 `;
 
 const NameLastSeen = styled.div`
