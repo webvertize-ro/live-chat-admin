@@ -62,8 +62,9 @@ const Conversation = styled.div`
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
   @media (max-width: 576px) {
-    background-color: #fff;
-    color: #000;
+    background-color: ${(props) =>
+      props.isSelected ? 'rgb(26, 109, 65)' : '#fff'};
+    color: ${(props) => (props.isSelected ? '#fff' : '#000')};
   }
 
   background-color: ${(props) =>
