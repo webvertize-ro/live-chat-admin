@@ -52,6 +52,12 @@ const StyledH4 = styled.h4`
   padding-top: 1rem;
 `;
 
+const StyledButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #fff;
+`;
+
 const ConversationsSearchBar = styled.div`
   padding: 1rem;
 `;
@@ -197,9 +203,9 @@ function ConversationsList({
         <SearchBarTotal>
           <div className="d-flex justify-content-between align-items-center">
             <StyledH4>Conversații</StyledH4>
-            <button type="button" onClick={() => setIsListOpen(false)}>
+            <StyledButton type="button" onClick={() => setIsListOpen(false)}>
               <FontAwesomeIcon icon={faXmark} />
-            </button>
+            </StyledButton>
           </div>
           <ConversationsSearchBar>
             <form className="d-flex">
