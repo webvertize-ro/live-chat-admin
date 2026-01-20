@@ -87,7 +87,6 @@ function ChatLayout() {
               </NotificationButton>
             </NotificationLabel>
             <Logout />
-            test
           </div>
         </Header>
         <ConversationsList
