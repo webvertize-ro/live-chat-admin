@@ -86,6 +86,7 @@ function ChatLayout() {
           onSelectedConvo={handleSelectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
           selectedConvo={selectedConvo}
+          setReplyTo={setReplyTo}
         />
         <ChatInterface
           replyTo={replyTo}

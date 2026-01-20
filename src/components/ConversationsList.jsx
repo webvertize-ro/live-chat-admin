@@ -120,6 +120,7 @@ function ConversationsList({
   onAcknowledgeConvo,
   selectedConvo,
   soundEnabled,
+  setReplyTo,
 }) {
   const { loading, conversations, error } = useConversations({ soundEnabled });
   const [searchInput, setSearchInput] = useState('');
@@ -163,6 +164,7 @@ function ConversationsList({
   function handleConversationClick(visitor) {
     onSelectedConvo(visitor);
     onAcknowledgeConvo(visitor);
+    setReplyTo(null);
   }
 
   // Notifications in the page title
