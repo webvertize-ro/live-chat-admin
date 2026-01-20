@@ -174,6 +174,7 @@ function ConversationsList({
     onSelectedConvo(visitor);
     onAcknowledgeConvo(visitor);
     setReplyTo(null);
+    setIsListOpen(false);
   }
 
   // Notifications in the page title
