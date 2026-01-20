@@ -432,7 +432,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   {msg.message && <Message>{msg.message}</Message>}
                   <MessageDate>{formatDate(msg.created_at)}</MessageDate>
                 </MessageContent>
-
+                {console.log('msg is: ', msg)}
                 <StyledReplyButton
                   type="button"
                   className="message-actions"
