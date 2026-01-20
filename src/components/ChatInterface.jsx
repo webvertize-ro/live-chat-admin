@@ -386,7 +386,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                           repliedMessage,
                         )}
                         {repliedMessage.sender_type === 'user'
-                          ? `${msg.user_name}`
+                          ? `${repliedMessage.user_name}`
                           : 'Edion Trans'}
                       </strong>
                       <div>
