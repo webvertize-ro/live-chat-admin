@@ -36,6 +36,10 @@ const Header = styled.div`
 `;
 
 const StyledToggleButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #1ca079;
+
   @media (min-width: 576px) {
     display: none;
   }
