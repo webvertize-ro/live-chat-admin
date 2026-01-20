@@ -157,10 +157,10 @@ const FileUploadInput = styled.input`
 const PreviewContainer = styled.div`
   padding: 0.5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: lightgray;
+  gap: 1rem;
 `;
 
 const StyledPreviewImg = styled.img`
