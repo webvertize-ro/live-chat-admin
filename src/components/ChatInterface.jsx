@@ -464,10 +464,10 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
             <div className="d-flex align-items-center gap-2">
               Răspuns pentru{' '}
               <strong>
-                {console.log('replyTo este: ', replyTo)}
-                {replyTo.sender_type === 'user'
+                {/* {replyTo.sender_type === 'user'
                   ? `${replyTo.user_name}`
-                  : 'propriul mesaj'}
+                  : 'propriul mesaj'} */}
+                {replyTo.user_name}
               </strong>
             </div>
             <div className="d-flex justify-content-center">
