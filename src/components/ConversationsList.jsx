@@ -61,15 +61,19 @@ const Conversation = styled.div`
   align-items: center;
   gap: 0.5rem;
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
-  background-color: ${(props) =>
-    props.isSelected ? 'rgba(26, 109, 65, 0.75)' : '#fff'};
-  color: ${(props) => (props.isSelected ? '#fff' : '#000')};
-  transition: all 0.3s ease;
+  @media (min-width: 576px) {
+    background-color: ${(props) =>
+      props.isSelected ? 'rgba(26, 109, 65, 0.75)' : '#fff'};
+    color: ${(props) => (props.isSelected ? '#fff' : '#000')};
+    transition: all 0.3s ease;
+  }
 
-  &:hover {
-    cursor: pointer;
-    background-color: rgb(26, 109, 65);
-    color: #fff;
+  @media (min-width: 576px) {
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(26, 109, 65, 0.75);
+      color: #fff;
+    }
   }
 `;
 
