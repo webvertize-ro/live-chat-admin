@@ -170,6 +170,12 @@ const ReplyToPreviewContainer = styled.div`
   gap: 1rem;
 `;
 
+const ReplyToImg = styled.img`
+  width: 60px;
+  border-radius: 0.5rem;
+  width: 100px;
+`;
+
 const StyledPreviewImg = styled.img`
   border-radius: 0.5rem;
 `;
@@ -475,7 +481,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
               {!replyTo.file_url ? (
                 replyTo.message
               ) : replyTo.file_mime.startsWith('image/') ? (
-                <img src={replyTo.file_url} width="100" />
+                <ReplyToImg src={replyTo.file_url} />
               ) : (
                 <a href={replyTo.file_url} target="_blank">
                   {replyTo.file_name}
