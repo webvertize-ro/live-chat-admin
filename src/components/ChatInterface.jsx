@@ -196,11 +196,6 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
   const [replyTo, setReplyTo] = useState(null);
   const messagesEndRef = useRef(null);
 
-  const clearAttachment = () => {
-    setAttachment(null);
-    setPreviewUrl(null);
-  };
-
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -339,7 +334,10 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
     }
   };
 
-  clearAttachment();
+  const clearAttachment = () => {
+    setAttachment(null);
+    setPreviewUrl(null);
+  };
 
   if (!selectedConvo)
     return (
