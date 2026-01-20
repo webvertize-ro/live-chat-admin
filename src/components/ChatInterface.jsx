@@ -451,7 +451,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   : 'propriul mesaj'}
               </strong>
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center gap-2">
               {!replyTo.file_url ? (
                 replyTo.message
               ) : replyTo.file_mime.startsWith('image/') ? (
