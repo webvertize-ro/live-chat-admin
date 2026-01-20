@@ -97,15 +97,17 @@ function ChatLayout() {
             <Logout />
           </div>
         </Header>
-        <ConversationsList
-          soundEnabled={settings.notification_sound_enabled}
-          onSelectedConvo={handleSelectedConvo}
-          onAcknowledgeConvo={acknowledgeConvo}
-          selectedConvo={selectedConvo}
-          setReplyTo={setReplyTo}
-          isListOpen={isListOpen}
-          setIsListOpen={setIsListOpen}
-        />
+        {isListOpen && (
+          <ConversationsList
+            soundEnabled={settings.notification_sound_enabled}
+            onSelectedConvo={handleSelectedConvo}
+            onAcknowledgeConvo={acknowledgeConvo}
+            selectedConvo={selectedConvo}
+            setReplyTo={setReplyTo}
+            isListOpen={isListOpen}
+            setIsListOpen={setIsListOpen}
+          />
+        )}
         <ChatInterface
           replyTo={replyTo}
           setReplyTo={setReplyTo}
