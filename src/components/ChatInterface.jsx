@@ -381,6 +381,10 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                       }}
                     >
                       <strong>
+                        {console.log(
+                          'this is the replied message: ',
+                          repliedMessage,
+                        )}
                         {repliedMessage.sender_type === 'admin'
                           ? 'Edion Trans'
                           : `${msg.user_name}`}
@@ -462,7 +466,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                 </a>
               )}
             </div>
-            {console.log("we're replying to: ", replyTo)}
+            {/* {console.log("we're replying to: ", replyTo)} */}
           </div>
 
           <StyledButton type="button" onClick={() => setReplyTo(null)}>
