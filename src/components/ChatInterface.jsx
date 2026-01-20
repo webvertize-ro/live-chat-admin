@@ -449,6 +449,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
               </strong>
             </div>
             <div>"{replyTo.message}"</div>
+            {console.log("we're replying to: ", replyTo)}
           </div>
 
           <StyledButton type="button" onClick={() => setReplyTo(null)}>
