@@ -21,7 +21,7 @@ const StyledChatLayout = styled.div`
   grid-template-columns: 2.5fr 6fr;
   grid-template-areas: 'header header' 'sidebar main';
 
-  @media (mx-width: 576px) {
+  @media (max-width: 576px) {
     grid-template: 'header' 100px 'main';
   }
 `;
