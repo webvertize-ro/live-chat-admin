@@ -180,7 +180,7 @@ function ConversationsList({
   return (
     <StyledConversationsList>
       <SearchBarTotal>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between align-items-center">
           <StyledH4>Conversații</StyledH4>
           <FontAwesomeIcon icon={faXmark} />
         </div>
