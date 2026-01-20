@@ -129,10 +129,11 @@ function ConversationsList({
   selectedConvo,
   soundEnabled,
   setReplyTo,
+  isListOpen,
+  setIsListOpen,
 }) {
   const { loading, conversations, error } = useConversations({ soundEnabled });
   const [searchInput, setSearchInput] = useState('');
-  const [isListOpen, setIsListOpen] = useState(true);
 
   useEffect(() => {
     function calculateNotifications() {

@@ -49,6 +49,7 @@ function ChatLayout() {
 
   const [selectedConvo, setSelectedConvo] = useState(null);
   const [replyTo, setReplyTo] = useState(null);
+  const [isListOpen, setIsListOpen] = useState(true);
 
   function handleSelectedConvo(visitorId) {
     console.log(selectedConvo);
@@ -95,6 +96,8 @@ function ChatLayout() {
           onAcknowledgeConvo={acknowledgeConvo}
           selectedConvo={selectedConvo}
           setReplyTo={setReplyTo}
+          isListOpen={isListOpen}
+          setIsListOpen={setIsListOpen}
         />
         <ChatInterface
           replyTo={replyTo}
