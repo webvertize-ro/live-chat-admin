@@ -393,11 +393,13 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                         {repliedMessage.file_url ? (
                           repliedMessage.file_mime.startsWith('image/') ? (
                             <img src={repliedMessage.file_url} width="75" />
-                          ) : null
+                          ) : (
+                            <a href={repliedMessage.file_url} target="_blank">
+                              {repliedMessage.file_name}
+                            </a>
+                          )
                         ) : (
-                          <a href={repliedMessage.file_url} target="_blank">
-                            {repliedMessage.file_name}
-                          </a>
+                          repliedMessage.message
                         )}
                       </div>
                     </div>
