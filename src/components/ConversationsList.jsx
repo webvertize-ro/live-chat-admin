@@ -28,6 +28,13 @@ const StyledConversationsList = styled.div`
     background-color: #1ca079;
     outline: 1px solid slategrey;
   }
+
+  @media (max-width: 576px) {
+    position: absolute;
+    z-index: 999;
+    overflow-y: scroll;
+    height: 100vh;
+  }
 `;
 
 const SearchBarTotal = styled.div`
