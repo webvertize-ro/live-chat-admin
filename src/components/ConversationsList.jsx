@@ -68,7 +68,7 @@ const Conversation = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: rgb(26, 109, 65, 0.75);
+    background-color: rgb(26, 109, 65);
     color: #fff;
   }
 `;
