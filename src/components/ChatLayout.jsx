@@ -40,6 +40,13 @@ function ChatLayout() {
   const { settings, loading, toggleNotificationSound } = useAdminSettings();
 
   const [selectedConvo, setSelectedConvo] = useState(null);
+  const [attachment, setAttachment] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const clearAttachment = () => {
+    setAttachment(null);
+    setPreviewUrl(null);
+  };
 
   function handleSelectedConvo(visitorId) {
     console.log(selectedConvo);
@@ -87,6 +94,11 @@ function ChatLayout() {
           selectedConvo={selectedConvo}
         />
         <ChatInterface
+          clearAttachment={clearAttachment}
+          attachment={attachment}
+          setAttachment={setAttachment}
+          previewUrl={previewUrl}
+          setPreviewUrl={setPreviewUrl}
           selectedConvo={selectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
           visitor={selectedConvo}
