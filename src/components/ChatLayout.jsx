@@ -35,6 +35,12 @@ const Header = styled.div`
   padding: 0 16px;
 `;
 
+const StyledToggleButton = styled.button`
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
+
 const NotificationLabel = styled.label``;
 
 const NotificationButton = styled.button`
@@ -78,9 +84,12 @@ function ChatLayout() {
     <>
       <StyledChatLayout>
         <Header>
-          <button type="button" onClick={() => setIsListOpen((prev) => !prev)}>
+          <StyledToggleButton
+            type="button"
+            onClick={() => setIsListOpen((prev) => !prev)}
+          >
             <FontAwesomeIcon icon={faBars} />
-          </button>
+          </StyledToggleButton>
           <Logo />
           <div className="d-flex align-items-center justify-content-center gap-2">
             <NotificationLabel>
