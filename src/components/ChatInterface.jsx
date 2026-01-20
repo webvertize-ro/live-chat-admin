@@ -381,10 +381,10 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                       }}
                     >
                       <strong>
-                        {console.log(
+                        {/* {console.log(
                           'this is the replied message: ',
                           repliedMessage,
-                        )}
+                        )} */}
                         {repliedMessage.sender_type === 'user'
                           ? `${repliedMessage.user_name}`
                           : 'Edion Trans'}
@@ -462,6 +462,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
             <div className="d-flex align-items-center gap-2">
               Răspuns pentru{' '}
               <strong>
+                {console.log('replyTo este: ', replyTo)}
                 {replyTo.sender_type === 'user'
                   ? `${replyTo.user_name}`
                   : 'propriul mesaj'}
