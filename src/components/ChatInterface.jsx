@@ -462,8 +462,8 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
             <div className="d-flex align-items-center gap-2">
               Răspuns pentru{' '}
               <strong>
-                {replyTo.sender_type === 'admin'
-                  ? 'Edion Trans'
+                {replyTo.sender_type === 'user'
+                  ? `${replyTo.user_name}`
                   : 'propriul mesaj'}
               </strong>
             </div>
