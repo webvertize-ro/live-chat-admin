@@ -56,6 +56,10 @@ const StyledButton = styled.button`
   border: none;
   background-color: transparent;
   color: #fff;
+
+  @media (min-width: 577px) {
+    display: none;
+  }
 `;
 
 const ConversationsSearchBar = styled.div`
