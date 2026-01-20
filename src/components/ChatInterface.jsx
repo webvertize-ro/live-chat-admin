@@ -399,8 +399,6 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                             {repliedMessage.file_name}
                           </a>
                         )}
-
-                        {repliedMessage.message || 'Attachment'}
                       </div>
                     </div>
                   )}
