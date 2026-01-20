@@ -481,7 +481,8 @@ function ChatInterface({
         <ReplyToPreviewContainer>
           <div className="d-flex flex-column gap-2">
             <div className="d-flex align-items-center">
-              Răspuns pentru <strong>{replyTo.user_name}</strong>
+              Răspuns pentru {''}
+              <strong>{replyTo.user_name}</strong>
             </div>
             <div className="d-flex justify-content-center">
               {!replyTo.file_url ? (
