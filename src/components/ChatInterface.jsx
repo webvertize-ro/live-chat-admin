@@ -155,6 +155,13 @@ const FileUploadInput = styled.input`
 `;
 
 const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ReplyToPreviewContainer = styled.div`
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -432,7 +439,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   {msg.message && <Message>{msg.message}</Message>}
                   <MessageDate>{formatDate(msg.created_at)}</MessageDate>
                 </MessageContent>
-                {console.log('msg is: ', msg)}
+
                 <StyledReplyButton
                   type="button"
                   className="message-actions"
@@ -459,7 +466,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
 
       {/* reply-to preview above the input */}
       {replyTo && (
-        <PreviewContainer>
+        <ReplyToPreviewContainer>
           <div className="d-flex flex-column gap-2">
             <div className="d-flex align-items-center">
               Răspuns pentru <strong>{replyTo.user_name}</strong>
@@ -481,7 +488,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
           <StyledButton type="button" onClick={() => setReplyTo(null)}>
             <FontAwesomeIcon icon={faXmark} />
           </StyledButton>
-        </PreviewContainer>
+        </ReplyToPreviewContainer>
       )}
 
       {/* File Preview */}
