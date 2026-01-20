@@ -186,15 +186,7 @@ const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-function ChatInterface({
-  selectedConvo,
-  onAcknowledgeConvo,
-  visitor,
-  attachment,
-  setAttachment,
-  previewUrl,
-  setPreviewUrl,
-}) {
+function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
   const [attachment, setAttachment] = useState(null);
