@@ -63,6 +63,7 @@ const Conversation = styled.div`
   border-bottom: 1px solid rgba(225, 231, 239, 0.5);
   @media (max-width: 576px) {
     background-color: #fff;
+    color: #000;
   }
 
   background-color: ${(props) =>
