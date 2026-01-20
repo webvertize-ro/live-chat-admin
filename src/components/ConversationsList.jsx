@@ -28,6 +28,9 @@ const StyledConversationsList = styled.div`
     background-color: #1ca079;
     outline: 1px solid slategrey;
   }
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const SearchBarTotal = styled.div`
