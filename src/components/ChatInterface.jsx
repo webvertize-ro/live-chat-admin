@@ -480,7 +480,7 @@ function ChatInterface({
       {replyTo && (
         <ReplyToPreviewContainer>
           <div className="d-flex flex-column gap-2">
-            <div className="d-flex align-items-center gap-2">
+            <div className="d-flex align-items-center gap-1">
               <div>Răspuns pentru</div>
               <strong>{replyTo.user_name}</strong>
             </div>
