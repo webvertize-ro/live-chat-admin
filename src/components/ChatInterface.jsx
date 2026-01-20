@@ -186,14 +186,20 @@ const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
+function ChatInterface({
+  selectedConvo,
+  onAcknowledgeConvo,
+  visitor,
+  replyTo,
+  setReplyTo,
+}) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
   const [attachment, setAttachment] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [loadingSendMessage, setLoadingSendMessage] = useState(false);
-  const [replyTo, setReplyTo] = useState(null);
+
   const messagesEndRef = useRef(null);
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);

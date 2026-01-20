@@ -40,6 +40,7 @@ function ChatLayout() {
   const { settings, loading, toggleNotificationSound } = useAdminSettings();
 
   const [selectedConvo, setSelectedConvo] = useState(null);
+  const [replyTo, setReplyTo] = useState(null);
 
   function handleSelectedConvo(visitorId) {
     console.log(selectedConvo);
@@ -87,6 +88,8 @@ function ChatLayout() {
           selectedConvo={selectedConvo}
         />
         <ChatInterface
+          replyTo={replyTo}
+          setReplyTo={setReplyTo}
           selectedConvo={selectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
           visitor={selectedConvo}
