@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import LoadingComponent from './LoadingComponent';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 const StyledConversationsList = styled.div`
   display: flex;
@@ -77,14 +78,6 @@ const Conversation = styled.div`
     background-color: rgb(26, 109, 65, 0.75);
     color: #fff;
   }
-
-  /* @media (max-width: 576px) {
-    &:hover {
-      cursor: pointer;
-      background-color: rgb(26, 109, 65);
-      color: #fff;
-    }
-  } */
 `;
 
 const NameLastSeen = styled.div`
@@ -148,6 +141,7 @@ function ConversationsList({
 }) {
   const { loading, conversations, error } = useConversations({ soundEnabled });
   const [searchInput, setSearchInput] = useState('');
+  const isMobile = useMediaQuery('(max-width: 576px)');
 
   useEffect(() => {
     function calculateNotifications() {
@@ -189,7 +183,10 @@ function ConversationsList({
     onSelectedConvo(visitor);
     onAcknowledgeConvo(visitor);
     setReplyTo(null);
-    setIsListOpen(false);
+
+    if (isMobile) {
+      setIsListOpen(false);
+    }
   }
 
   // Notifications in the page title
