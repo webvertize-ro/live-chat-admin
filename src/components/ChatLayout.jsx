@@ -51,6 +51,7 @@ function ChatLayout() {
   function handleSelectedConvo(visitorId) {
     console.log(selectedConvo);
     setSelectedConvo(visitorId);
+    clearAttachment();
   }
 
   console.log('selectedConvo is: ', selectedConvo);
