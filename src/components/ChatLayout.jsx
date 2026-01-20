@@ -51,7 +51,6 @@ function ChatLayout() {
   function handleSelectedConvo(visitorId) {
     console.log(selectedConvo);
     setSelectedConvo(visitorId);
-    clearAttachment();
   }
 
   console.log('selectedConvo is: ', selectedConvo);
@@ -93,6 +92,7 @@ function ChatLayout() {
           onSelectedConvo={handleSelectedConvo}
           onAcknowledgeConvo={acknowledgeConvo}
           selectedConvo={selectedConvo}
+          clearAttachment={clearAttachment}
         />
         <ChatInterface
           clearAttachment={clearAttachment}
