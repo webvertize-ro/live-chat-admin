@@ -35,6 +35,7 @@ const StyledConversationsList = styled.div`
     z-index: 999;
     overflow-y: scroll;
     height: 100vh;
+    display: none; // hidden by default
   }
 `;
 
@@ -132,6 +133,7 @@ function ConversationsList({
 }) {
   const { loading, conversations, error } = useConversations({ soundEnabled });
   const [searchInput, setSearchInput] = useState('');
+  const [isListOpen, setIsListOpen] = useState(false);
 
   useEffect(() => {
     function calculateNotifications() {
@@ -182,7 +184,9 @@ function ConversationsList({
       <SearchBarTotal>
         <div className="d-flex justify-content-between align-items-center">
           <StyledH4>Conversații</StyledH4>
-          <FontAwesomeIcon icon={faXmark} />
+          <button type="button" onClick={(prev) => setIsListOpen(!prev)}>
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
         </div>
         <ConversationsSearchBar>
           <form className="d-flex">
