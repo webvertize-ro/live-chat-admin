@@ -6,7 +6,11 @@ import Logout from './authentication/Logout';
 import Logo from './Logo';
 import { useAdminSettings } from '../hooks/useAdminSettings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeHigh, faXmark } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faVolumeHigh,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 
 const StyledChatLayout = styled.div`
@@ -74,6 +78,9 @@ function ChatLayout() {
     <>
       <StyledChatLayout>
         <Header>
+          <button type="button" onClick={(prev) => setIsListOpen(!prev)}>
+            <FontAwesomeIcon icon={faBars} />
+          </button>
           <Logo />
           <div className="d-flex align-items-center justify-content-center gap-2">
             <NotificationLabel>
