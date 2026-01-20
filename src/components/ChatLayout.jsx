@@ -78,7 +78,7 @@ function ChatLayout() {
     <>
       <StyledChatLayout>
         <Header>
-          <button type="button" onClick={(prev) => setIsListOpen(!prev)}>
+          <button type="button" onClick={setIsListOpen((prev) => !prev)}>
             <FontAwesomeIcon icon={faBars} />
           </button>
           <Logo />
