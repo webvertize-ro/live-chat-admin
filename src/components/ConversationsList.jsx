@@ -4,6 +4,7 @@ import useConversations from '../hooks/useConversations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import LoadingComponent from './LoadingComponent';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const StyledConversationsList = styled.div`
   display: flex;
@@ -179,7 +180,10 @@ function ConversationsList({
   return (
     <StyledConversationsList>
       <SearchBarTotal>
-        <StyledH4>Conversații</StyledH4>
+        <div className="d-flex justify-content-between">
+          <StyledH4>Conversații</StyledH4>
+          <FontAwesomeIcon icon={faXmark} />
+        </div>
         <ConversationsSearchBar>
           <form className="d-flex">
             <input
