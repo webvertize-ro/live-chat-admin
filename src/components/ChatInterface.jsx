@@ -424,6 +424,8 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                       id: msg.id,
                       message: msg.message,
                       file_url: msg.file_url ?? null,
+                      file_name: msg.file_name ?? null,
+                      file_mime: msg.file_mime ?? null,
                       sender_type: msg.sender_type,
                     });
                   }}
@@ -449,7 +451,17 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   : 'propriul mesaj'}
               </strong>
             </div>
-            <div>"{replyTo.message}"</div>
+            <div>
+              {!replyTo.file_url ? (
+                replyTo.message
+              ) : replyTo.file_mime.startsWith('image/') ? (
+                <img src={replyTo.file_url} width="25" />
+              ) : (
+                <a href={replyTo.file_url} target="_blank">
+                  {replyTo.file_name}
+                </a>
+              )}
+            </div>
             {console.log("we're replying to: ", replyTo)}
           </div>
 
