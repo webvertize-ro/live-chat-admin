@@ -432,13 +432,14 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   {msg.message && <Message>{msg.message}</Message>}
                   <MessageDate>{formatDate(msg.created_at)}</MessageDate>
                 </MessageContent>
-                {console.log('msg este: ', msg)}
+
                 <StyledReplyButton
                   type="button"
                   className="message-actions"
                   onClick={() => {
                     setReplyTo({
                       id: msg.id,
+                      user_name: msg.user_name,
                       message: msg.message,
                       file_url: msg.file_url ?? null,
                       file_name: msg.file_name ?? null,
