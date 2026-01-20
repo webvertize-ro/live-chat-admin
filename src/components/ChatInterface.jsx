@@ -451,11 +451,11 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   : 'propriul mesaj'}
               </strong>
             </div>
-            <div>
+            <div className="d-flex justify-content-center">
               {!replyTo.file_url ? (
                 replyTo.message
               ) : replyTo.file_mime.startsWith('image/') ? (
-                <img src={replyTo.file_url} width="25" />
+                <img src={replyTo.file_url} width="100" />
               ) : (
                 <a href={replyTo.file_url} target="_blank">
                   {replyTo.file_name}
