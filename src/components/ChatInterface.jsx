@@ -385,9 +385,9 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                           'this is the replied message: ',
                           repliedMessage,
                         )}
-                        {repliedMessage.sender_type === 'admin'
-                          ? 'Edion Trans'
-                          : `${msg.user_name}`}
+                        {repliedMessage.sender_type === 'user'
+                          ? `${msg.user_name}`
+                          : 'Edion Trans'}
                       </strong>
                       <div>
                         {repliedMessage.file_url ? (
