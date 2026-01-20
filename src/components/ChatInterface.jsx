@@ -423,6 +423,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                     setReplyTo({
                       id: msg.id,
                       message: msg.message,
+                      file_url: msg.file_url ?? null,
                       sender_type: msg.sender_type,
                     });
                   }}
