@@ -194,15 +194,20 @@ function ChatInterface({
   setAttachment,
   previewUrl,
   setPreviewUrl,
-  clearAttachment,
 }) {
   const [messages, setMessages] = useState();
   const [input, setInput] = useState();
-
+  const [attachment, setAttachment] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [loadingSendMessage, setLoadingSendMessage] = useState(false);
   const [replyTo, setReplyTo] = useState(null);
   const messagesEndRef = useRef(null);
+
+  const clearAttachment = () => {
+    setAttachment(null);
+    setPreviewUrl(null);
+  };
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
