@@ -442,7 +442,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
       {/* reply-to preview above the input */}
       {replyTo && (
         <PreviewContainer>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column gap-2">
             <div className="d-flex align-items-center gap-2">
               Răspuns pentru{' '}
               <strong>
@@ -451,7 +451,7 @@ function ChatInterface({ selectedConvo, onAcknowledgeConvo, visitor }) {
                   : 'propriul mesaj'}
               </strong>
             </div>
-            <div className="d-flex justify-content-center gap-2">
+            <div className="d-flex justify-content-center">
               {!replyTo.file_url ? (
                 replyTo.message
               ) : replyTo.file_mime.startsWith('image/') ? (
