@@ -34,6 +34,10 @@ const NotificationButton = styled.button`
   background-color: transparent;
   color: #1ca079;
   font-size: 1.2rem;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 function ChatLayout() {

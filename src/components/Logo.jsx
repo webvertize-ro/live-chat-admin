@@ -8,6 +8,10 @@ const LogoTotal = styled.div`
 
 const LogoImage = styled.img`
   width: 50px;
+
+  @media (max-width: 576px) {
+    width: 30px;
+  }
 `;
 
 const LogoTextSubtext = styled.div``;
@@ -17,12 +21,20 @@ const LogoText = styled.div`
   color: hsl(162, 70%, 37%);
   font-size: 2rem;
   font-family: 'EspumaPro-Bold';
+
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const LogoSubText = styled.span`
   margin-top: -12px;
   text-transform: uppercase;
   font-size: 0.8rem;
+
+  @media (max-width: 576px) {
+    font-size: 0.7rem;
+  }
 `;
 
 function Logo() {

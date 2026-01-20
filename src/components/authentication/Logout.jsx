@@ -3,8 +3,9 @@ import LoadingComponent from '../LoadingComponent';
 import { useLogout } from './useLogout';
 
 const StyledButton = styled.button`
-  /* background: transparent;
-  border: none; */
+  @media (max-width: 576px) {
+    font-size: 0.8rem;
+  }
 `;
 
 function Logout() {
