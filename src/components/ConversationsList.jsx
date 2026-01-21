@@ -222,7 +222,7 @@ function ConversationsList({
   return (
     isListOpen && (
       <>
-        <Backdrop />
+        <Backdrop onClick={() => setIsListOpen(false)} />
         <StyledConversationsList>
           <SearchBarTotal>
             <div className="d-flex justify-content-between align-items-center">
