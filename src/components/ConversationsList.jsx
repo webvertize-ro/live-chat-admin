@@ -269,9 +269,9 @@ function ConversationsList({
                     <div>{visitor.phone_number}</div>
                   </ConversationPhoneNumber>
                 </ConversationInfo>
-                {visitor.unread_count > 0 && (
+                {visitor.unread_count_admin > 0 && (
                   <ConversationNotification>
-                    {visitor.unread_count}
+                    {visitor.unread_count_admin}
                   </ConversationNotification>
                 )}
               </Conversation>
