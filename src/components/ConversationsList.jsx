@@ -47,6 +47,7 @@ const SearchBarTotal = styled.div`
 `;
 
 const ConversationsContainer = styled.div`
+  height: 100vh;
   overflow-y: scroll;
 `;
 
