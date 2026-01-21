@@ -16,7 +16,7 @@ const StyledConversationsList = styled.div`
   grid-area: sidebar;
   border-right: 1px solid #e0e0e0;
   position: relative;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -34,7 +34,6 @@ const StyledConversationsList = styled.div`
   @media (max-width: 576px) {
     position: absolute;
     z-index: 999;
-    overflow-y: scroll;
     height: 100vh;
   }
 `;
