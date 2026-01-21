@@ -39,6 +39,7 @@ const StyledToggleButton = styled.button`
   border: none;
   background-color: transparent;
   color: #1ca079;
+  font-size: 1.4rem;
 
   @media (min-width: 576px) {
     display: none;
