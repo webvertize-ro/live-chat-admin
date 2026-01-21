@@ -12,7 +12,6 @@ const StyledConversationsList = styled.div`
   flex-direction: column;
   justify-content: ${(props) => (props.loading ? 'center' : 'unset')};
   align-items: ${(props) => (props.loading ? 'center' : 'unset')};
-  overflow-y: scroll;
   flex: 1.5;
   grid-area: sidebar;
   border-right: 1px solid #e0e0e0;
@@ -45,6 +44,10 @@ const SearchBarTotal = styled.div`
   background-color: rgba(26, 109, 65, 1);
   color: #fff;
   z-index: 10;
+`;
+
+const ConversationsContainer = styled.div`
+  overflow-y: scroll;
 `;
 
 const StyledH4 = styled.h4`
@@ -225,37 +228,41 @@ function ConversationsList({
           </ConversationsSearchBar>
         </SearchBarTotal>
 
-        {filteredConversations.map((visitor, i) => (
-          <Conversation
-            key={visitor.id}
-            isSelected={visitor?.id === selectedConvo?.id}
-            onClick={() => handleConversationClick(visitor)}
-          >
-            <ConversationAvatar>
-              <FontAwesomeIcon icon={faUser} />
-            </ConversationAvatar>
-            <ConversationInfo>
-              <ConversationName>
-                <NameLastSeen>
-                  <Name>
-                    <strong>Nume: </strong>
-                    <div>{visitor.name}</div>
-                  </Name>
-                </NameLastSeen>
-              </ConversationName>
-              <ConversationPhoneNumber>
-                <strong>Phone Number:</strong>
-                <div>{visitor.phone_number}</div>
-              </ConversationPhoneNumber>
-            </ConversationInfo>
-            {visitor.unread_count > 0 && (
-              <ConversationNotification>
-                {visitor.unread_count}
-              </ConversationNotification>
-            )}
-          </Conversation>
-        ))}
-        {filteredConversations.length === 0 && <p>Nicio conversație găsită.</p>}
+        <ConversationsContainer>
+          {filteredConversations.map((visitor, i) => (
+            <Conversation
+              key={visitor.id}
+              isSelected={visitor?.id === selectedConvo?.id}
+              onClick={() => handleConversationClick(visitor)}
+            >
+              <ConversationAvatar>
+                <FontAwesomeIcon icon={faUser} />
+              </ConversationAvatar>
+              <ConversationInfo>
+                <ConversationName>
+                  <NameLastSeen>
+                    <Name>
+                      <strong>Nume: </strong>
+                      <div>{visitor.name}</div>
+                    </Name>
+                  </NameLastSeen>
+                </ConversationName>
+                <ConversationPhoneNumber>
+                  <strong>Phone Number:</strong>
+                  <div>{visitor.phone_number}</div>
+                </ConversationPhoneNumber>
+              </ConversationInfo>
+              {visitor.unread_count > 0 && (
+                <ConversationNotification>
+                  {visitor.unread_count}
+                </ConversationNotification>
+              )}
+            </Conversation>
+          ))}
+          {filteredConversations.length === 0 && (
+            <p>Nicio conversație găsită.</p>
+          )}
+        </ConversationsContainer>
       </StyledConversationsList>
     )
   );
