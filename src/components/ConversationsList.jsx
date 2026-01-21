@@ -16,6 +16,7 @@ const StyledConversationsList = styled.div`
   grid-area: sidebar;
   border-right: 1px solid #e0e0e0;
   position: relative;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
