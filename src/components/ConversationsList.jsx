@@ -144,6 +144,18 @@ const ConversationPhoneNumber = styled.div`
   gap: 0.5rem;
 `;
 
+const Backdrop = styled.div`
+  display: none;
+
+  @media (max-width: 576px) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 900;
+  }
+`;
+
 const ConversationLastMessage = styled.div``;
 
 function ConversationsList({
@@ -209,64 +221,67 @@ function ConversationsList({
 
   return (
     isListOpen && (
-      <StyledConversationsList>
-        <SearchBarTotal>
-          <div className="d-flex justify-content-between align-items-center">
-            <StyledH4>Conversații</StyledH4>
-            <StyledButton type="button" onClick={() => setIsListOpen(false)}>
-              <FontAwesomeIcon icon={faXmark} />
-            </StyledButton>
-          </div>
-          <ConversationsSearchBar>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Caută după nume sau număr de telefon..."
-                aria-label="Search"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              ></input>
-            </form>
-          </ConversationsSearchBar>
-        </SearchBarTotal>
+      <>
+        <Backdrop />
+        <StyledConversationsList>
+          <SearchBarTotal>
+            <div className="d-flex justify-content-between align-items-center">
+              <StyledH4>Conversații</StyledH4>
+              <StyledButton type="button" onClick={() => setIsListOpen(false)}>
+                <FontAwesomeIcon icon={faXmark} />
+              </StyledButton>
+            </div>
+            <ConversationsSearchBar>
+              <form className="d-flex">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Caută după nume sau număr de telefon..."
+                  aria-label="Search"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                ></input>
+              </form>
+            </ConversationsSearchBar>
+          </SearchBarTotal>
 
-        <ConversationsContainer>
-          {filteredConversations.map((visitor, i) => (
-            <Conversation
-              key={visitor.id}
-              isSelected={visitor?.id === selectedConvo?.id}
-              onClick={() => handleConversationClick(visitor)}
-            >
-              <ConversationAvatar>
-                <FontAwesomeIcon icon={faUser} />
-              </ConversationAvatar>
-              <ConversationInfo>
-                <ConversationName>
-                  <NameLastSeen>
-                    <Name>
-                      <strong>Nume: </strong>
-                      <div>{visitor.name}</div>
-                    </Name>
-                  </NameLastSeen>
-                </ConversationName>
-                <ConversationPhoneNumber>
-                  <strong>Phone Number:</strong>
-                  <div>{visitor.phone_number}</div>
-                </ConversationPhoneNumber>
-              </ConversationInfo>
-              {visitor.unread_count > 0 && (
-                <ConversationNotification>
-                  {visitor.unread_count}
-                </ConversationNotification>
-              )}
-            </Conversation>
-          ))}
-          {filteredConversations.length === 0 && (
-            <p>Nicio conversație găsită.</p>
-          )}
-        </ConversationsContainer>
-      </StyledConversationsList>
+          <ConversationsContainer>
+            {filteredConversations.map((visitor, i) => (
+              <Conversation
+                key={visitor.id}
+                isSelected={visitor?.id === selectedConvo?.id}
+                onClick={() => handleConversationClick(visitor)}
+              >
+                <ConversationAvatar>
+                  <FontAwesomeIcon icon={faUser} />
+                </ConversationAvatar>
+                <ConversationInfo>
+                  <ConversationName>
+                    <NameLastSeen>
+                      <Name>
+                        <strong>Nume: </strong>
+                        <div>{visitor.name}</div>
+                      </Name>
+                    </NameLastSeen>
+                  </ConversationName>
+                  <ConversationPhoneNumber>
+                    <strong>Phone Number:</strong>
+                    <div>{visitor.phone_number}</div>
+                  </ConversationPhoneNumber>
+                </ConversationInfo>
+                {visitor.unread_count > 0 && (
+                  <ConversationNotification>
+                    {visitor.unread_count}
+                  </ConversationNotification>
+                )}
+              </Conversation>
+            ))}
+            {filteredConversations.length === 0 && (
+              <p>Nicio conversație găsită.</p>
+            )}
+          </ConversationsContainer>
+        </StyledConversationsList>
+      </>
     )
   );
 }
